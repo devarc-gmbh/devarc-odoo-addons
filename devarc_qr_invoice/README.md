@@ -20,15 +20,18 @@ prints on customer invoices.
   - Vendor: found by the IBAN of an existing bank account, otherwise by name and ZIP, otherwise
     created as a new company.
   - Bank account of the vendor (created when missing) and the currency (must be active).
-  - Payment reference (QRR or SCOR) and the reference *ref* (unstructured message).
+  - Payment reference (QRR or SCOR). The reference *ref* and the bill date come from the invoice
+    number (/10/) and the document date (/11/) of SWICO S1 billing information, when present. An
+    existing bill date is kept. The unstructured message and billing information go to the notes.
   - One invoice line with the QR-bill amount, quantity 1 and no product. Odoo fills its default expense
     account and the add-on leaves the tax empty, so you choose the account and VAT before posting.
     When the bill already has lines, they are kept and no line is added.
   - The uploaded document is attached to the bill.
   - The bill stays in draft.
 - Duplicate warning: Odoo 19 already shows its own duplicate banner on the bill. In addition, when
-  another non-cancelled vendor bill of the same vendor and company has the same payment reference or
-  reference, the import shows a warning with links to those bills. The new bill is created anyway.
+  another non-cancelled vendor bill of the same vendor and company has the same payment reference or,
+  when filled, the same invoice number reference, the import shows a warning with links to those
+  bills. The new bill is created anyway.
 
 ### QR-bill on customer invoices
 

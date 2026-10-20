@@ -154,13 +154,16 @@ class DevarcQrBillImport(models.TransientModel):
             "partner_bank_id": bank_account.id,
             "currency_id": currency.id,
             "payment_reference": payload.reference if payload.reference_type in ("QRR", "SCOR") else False,
-            "ref": payload.unstructured_message[:MOVE_REF_MAX_LENGTH] or False,
             "narration": self._bill_narration(payload),
         }
         bill = self.move_id
+        if payload.invoice_number:
+            bill_vals["ref"] = payload.invoice_number[:MOVE_REF_MAX_LENGTH]
+        if payload.invoice_date and not bill.invoice_date:
+            bill_vals["invoice_date"] = payload.invoice_date
         if payload.amount is not None and not bill.invoice_line_ids:
             bill_vals["invoice_line_ids"] = [Command.create({
-                "name": payload.unstructured_message or payload.reference or payload.creditor.name,
+                "name": payload.unstructured_message or self._invoice_line_name(payload),
                 "quantity": 1,
                 "price_unit": float(payload.amount),
                 "tax_ids": [Command.clear()],
@@ -173,6 +176,11 @@ class DevarcQrBillImport(models.TransientModel):
             "company_id": company.id,
             **bill_vals,
         })
+
+    def _invoice_line_name(self, payload):
+        if payload.invoice_number:
+            return self.env._("Invoice %(number)s", number=payload.invoice_number)
+        return payload.reference or payload.creditor.name
 
     @api.model
     def _bill_narration(self, payload):

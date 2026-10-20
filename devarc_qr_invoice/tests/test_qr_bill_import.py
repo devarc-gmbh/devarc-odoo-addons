@@ -1,6 +1,7 @@
 import base64
 import io
 import unittest
+from datetime import date
 from pathlib import Path
 
 from lxml import etree
@@ -22,6 +23,8 @@ else:
 FIXTURES_PATH = Path(__file__).parent / "fixtures"
 GERMAN_IBAN = "DE89370400440532013000"
 K_ADDRESS_VENDOR = "Robert Schneider AG"
+OTHER_QR_REFERENCE = "210000000003139471430009025"
+REAL_SWICO_BILLING_INFO = "//S1/10/1092/11/260531/20/LE-65/30/477236108/31/260531/32/8.1/40/0:30"
 
 
 def _read_fixture(name):
@@ -31,6 +34,13 @@ def _read_fixture(name):
 def _swiss_iban(bban):
     check_digits = 98 - int("".join(str(int(char, 36)) for char in f"{bban}CH00")) % 97
     return f"CH{check_digits:02d}{bban}"
+
+
+def _with_lines(payload_text, replacements):
+    lines = payload_text.split("\n")
+    for index, value in replacements.items():
+        lines[index] = value
+    return "\n".join(lines)
 
 
 def _with_iban(payload_text, iban):
@@ -68,7 +78,8 @@ class QrBillImportCommon(SwissQrBillCommon):
             "payment_reference": SIX_QR_REFERENCE,
             "currency_id": self.chf.id,
             "amount_total": 1949.75,
-            "ref": TEST_MESSAGE,
+            "ref": False,
+            "invoice_date": False,
         }])
         self.assertEqual(bill.partner_bank_id.sanitized_acc_number, SIX_QR_IBAN)
         self.assertEqual(len(bill.invoice_line_ids), 1)
@@ -128,6 +139,45 @@ class TestQrBillImport(QrBillImportCommon):
         }])
         self.assertEqual(bill.amount_total, 3949.75)
         self.assertIn("//S1/10/10201409", bill.narration)
+
+    def test_swico_billing_info_fills_invoice_number_and_date(self):
+        bill, _action = self._import(payload_text=self.k_address_payload)
+        self.assertRecordValues(bill, [{"ref": "10201409", "invoice_date": date(2020, 7, 1)}])
+        self.assertEqual(bill.invoice_line_ids.name, "Auftrag vom 15.06.2020")
+        self.assertIn("Auftrag vom 15.06.2020", bill.narration)
+
+    def test_swico_invoice_number_names_line_without_message(self):
+        payload_text = _with_lines(self.k_address_payload, {29: "", 31: REAL_SWICO_BILLING_INFO})
+        bill, _action = self._import(payload_text=payload_text)
+        self.assertRecordValues(bill, [{"ref": "1092", "invoice_date": date(2026, 5, 31)}])
+        self.assertEqual(bill.invoice_line_ids.name, "Invoice 1092")
+
+    def test_unstructured_message_is_not_used_as_reference(self):
+        bill, _action = self._import(payload_text=self.qrr_payload)
+        self.assertFalse(bill.ref)
+        self.assertEqual(bill.invoice_line_ids.name, TEST_MESSAGE)
+
+    def test_swico_invoice_date_keeps_date_of_existing_draft_bill(self):
+        draft_bill = self.env["account.move"].create({"move_type": "in_invoice", "invoice_date": "2026-01-15", "ref": "Manual"})
+        bill, _action = self._import(payload_text=self.k_address_payload, move_id=draft_bill.id)
+        self.assertRecordValues(bill, [{"ref": "10201409", "invoice_date": date(2026, 1, 15)}])
+
+    def test_same_message_with_different_qr_references_is_no_duplicate(self):
+        qrr_payloads = [
+            _with_lines(self.k_address_payload, {28: reference, 29: "Quellensteuer", 31: ""})
+            for reference in (SIX_QR_REFERENCE, OTHER_QR_REFERENCE)
+        ]
+        first_bill, _action = self._import(payload_text=qrr_payloads[0])
+        second_bill, action = self._import(payload_text=qrr_payloads[1])
+        self.assertEqual(action["type"], "ir.actions.act_window")
+        self.assertEqual(second_bill.partner_id, first_bill.partner_id)
+        self.assertFalse(first_bill.ref or second_bill.ref)
+        _third_bill, duplicate_action = self._import(payload_text=qrr_payloads[1])
+        self.assertEqual(duplicate_action["tag"], "display_notification")
+        self.assertIn(OTHER_QR_REFERENCE, duplicate_action["params"]["title"])
+        self.assertEqual(duplicate_action["params"]["links"], [
+            {"label": second_bill.display_name, "url": f"/odoo/account.move/{second_bill.id}"},
+        ])
 
     def test_new_vendor_is_created_from_structured_address(self):
         payload_text = _with_iban(self.qrr_payload, self.other_vendor_qr_iban).replace(

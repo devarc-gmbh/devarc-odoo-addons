@@ -1,3 +1,4 @@
+from datetime import date
 from decimal import Decimal
 from pathlib import Path
 
@@ -77,6 +78,32 @@ class TestQrBillPayloadParser(TransactionCase):
         self.assertEqual(payload.amount, Decimal("3949.75"))
         self.assertTrue(payload.billing_info.startswith("//S1/"))
         self.assertEqual(payload.alt_procedures, ("Name AV1: UV;UltraPay005;12345", "Name AV2: XY;XYService;54321"))
+        self.assertEqual(payload.invoice_number, "10201409")
+        self.assertEqual(payload.invoice_date, date(2020, 7, 1))
+
+    def test_swico_billing_info_invoice_number_and_date(self):
+        billing_infos = {
+            "//S1/10/1092/11/260531/20/LE-65/30/477236108/31/260531/32/8.1/40/0:30": ("1092", date(2026, 5, 31)),
+            "//S1/10/1093/11/260531/30/477236108/32/8.1/40/0:30": ("1093", date(2026, 5, 31)),
+            "//S1/10/11630/11/260608": ("11630", date(2026, 6, 8)),
+            "//S1/10/11630/11/260601260630": ("11630", date(2026, 6, 1)),
+            "//S1/10/RE\\/2026\\\\7/30/477236108": ("RE/2026\\7", None),
+            "//S1/30/477236108/32/8.1": ("", None),
+            "//S1/10/1092/11/261340": ("1092", None),
+            "//S1/10/1092/11/2605": ("1092", None),
+        }
+        for billing_info, (invoice_number, invoice_date) in billing_infos.items():
+            with self.subTest(billing_info=billing_info):
+                payload = parse("\n".join(_replace_line(self.qrr_lines, 31, billing_info)))
+                self.assertEqual((payload.invoice_number, payload.invoice_date), (invoice_number, invoice_date))
+
+    def test_invalid_or_missing_swico_billing_info_is_ignored(self):
+        billing_infos = ("", "Rechnung 1092", "//S2/10/1092", "//S1/10", "//S1/10/1092/11", "//S1/x1/1092", "/S1/10/1092")
+        for billing_info in billing_infos:
+            with self.subTest(billing_info=billing_info):
+                payload = parse("\n".join(_replace_line(self.qrr_lines, 31, billing_info)))
+                self.assertEqual((payload.invoice_number, payload.invoice_date), ("", None))
+                self.assertEqual(payload.billing_info, billing_info)
 
     def test_invalid_payloads_are_rejected(self):
         invalid_payloads = {

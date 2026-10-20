@@ -1,5 +1,6 @@
 import re
 from dataclasses import dataclass
+from datetime import date, datetime
 from decimal import Decimal
 
 from odoo.tools.misc import mod10r
@@ -21,6 +22,11 @@ AMOUNT_PATTERN = re.compile(r"\d{1,9}(\.\d{1,2})?")
 COUNTRY_PATTERN = re.compile(r"[A-Z]{2}")
 QR_REFERENCE_PATTERN = re.compile(r"\d{27}")
 CREDITOR_REFERENCE_PATTERN = re.compile(r"RF\d{2}[0-9A-Z]{1,21}")
+SWICO_S1_PREFIX = "//S1/"
+SWICO_TAG_PATTERN = re.compile(r"\d{2}")
+SWICO_DATE_PATTERN = re.compile(r"(\d{6})(\d{6})?")
+SWICO_INVOICE_NUMBER_TAG = "10"
+SWICO_INVOICE_DATE_TAG = "11"
 
 
 class QrBillPayloadError(ValueError):
@@ -51,6 +57,8 @@ class QrBillPayload:
     unstructured_message: str
     billing_info: str
     alt_procedures: tuple[str, ...]
+    invoice_number: str = ""
+    invoice_date: date | None = None
 
     @property
     def is_qr_iban(self):
@@ -70,6 +78,7 @@ def parse(text):
     billing_info = lines[31] if len(lines) > 31 else ""
     if len(unstructured_message) + len(billing_info) > MAX_MESSAGE_LENGTH:
         raise QrBillPayloadError(f"The unstructured message and billing information exceed {MAX_MESSAGE_LENGTH} characters.")
+    swico_values = _parse_swico_s1(billing_info)
     return QrBillPayload(
         iban=iban,
         creditor=_parse_address(lines[4:11], "creditor", required=True),
@@ -82,7 +91,43 @@ def parse(text):
         unstructured_message=unstructured_message,
         billing_info=billing_info,
         alt_procedures=tuple(line for line in lines[32:] if line),
+        invoice_number=swico_values.get(SWICO_INVOICE_NUMBER_TAG, ""),
+        invoice_date=_parse_swico_date(swico_values.get(SWICO_INVOICE_DATE_TAG, "")),
     )
+
+
+def _parse_swico_s1(billing_info):
+    if not billing_info.startswith(SWICO_S1_PREFIX):
+        return {}
+    values = _split_swico_values(billing_info.removeprefix(SWICO_S1_PREFIX))
+    tags, contents = values[::2], values[1::2]
+    if len(tags) != len(contents) or not all(SWICO_TAG_PATTERN.fullmatch(tag) for tag in tags):
+        return {}
+    return dict(zip(tags, contents))
+
+
+def _split_swico_values(text):
+    values, current, chars = [], [], iter(text)
+    for char in chars:
+        if char == "\\":
+            current.append(next(chars, ""))
+        elif char == "/":
+            values.append("".join(current))
+            current = []
+        else:
+            current.append(char)
+    values.append("".join(current))
+    return values
+
+
+def _parse_swico_date(value):
+    match = SWICO_DATE_PATTERN.fullmatch(value)
+    if not match:
+        return None
+    try:
+        return datetime.strptime(match.group(1), "%y%m%d").date()
+    except ValueError:
+        return None
 
 
 def _split_lines(text):
