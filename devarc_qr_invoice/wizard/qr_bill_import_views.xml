@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_devarc_qr_bill_import_form" model="ir.ui.view">
+        <field name="name">devarc.qr.bill.import.form</field>
+        <field name="model">devarc.qr.bill.import</field>
+        <field name="arch" type="xml">
+            <form string="Import QR-bill">
+                <group name="qr_bill_input">
+                    <field name="attachment" filename="attachment_name"/>
+                    <field name="attachment_name" invisible="1"/>
+                    <field name="payload_text" placeholder="SPC&#10;0200&#10;1&#10;CH..."/>
+                    <field name="move_id" invisible="not move_id" readonly="1"/>
+                    <field name="company_id" invisible="1"/>
+                </group>
+                <footer>
+                    <button name="action_import" string="Import" type="object" class="btn-primary" data-hotkey="q"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="x"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_devarc_qr_bill_import" model="ir.actions.act_window">
+        <field name="name">Import QR-bill</field>
+        <field name="res_model">devarc.qr.bill.import</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_devarc_qr_bill_import"
+              name="Import QR-bill"
+              parent="account.menu_finance_payables"
+              action="action_devarc_qr_bill_import"
+              groups="account.group_account_invoice"
+              sequence="2"/>
+</odoo>
