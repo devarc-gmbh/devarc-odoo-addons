@@ -29,9 +29,10 @@ prints on customer invoices.
   - The uploaded document is attached to the bill.
   - The bill stays in draft.
 - Duplicate warning: Odoo 19 already shows its own duplicate banner on the bill. In addition, when
-  another non-cancelled vendor bill of the same vendor and company has the same payment reference or,
-  when filled, the same invoice number reference, the import shows a warning with links to those
-  bills. The new bill is created anyway.
+  another non-cancelled vendor bill of the same vendor and company has the same payment reference and
+  the same total in the same currency, or the same invoice number reference, the import shows a
+  warning with links to those bills. Some vendors reuse one QR reference on every invoice, so the
+  reference alone is not enough. The new bill is created anyway.
 
 ### QR-bill on customer invoices
 

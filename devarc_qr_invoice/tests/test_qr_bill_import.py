@@ -179,6 +179,31 @@ class TestQrBillImport(QrBillImportCommon):
             {"label": second_bill.display_name, "url": f"/odoo/account.move/{second_bill.id}"},
         ])
 
+    def test_same_qr_reference_with_other_amount_is_no_duplicate(self):
+        monthly_payloads = [
+            _with_lines(self.k_address_payload, {18: amount, 29: "", 31: ""})
+            for amount in ("30.40", "41.40", "30.40")
+        ]
+        first_bill, _action = self._import(payload_text=monthly_payloads[0])
+        second_bill, action = self._import(payload_text=monthly_payloads[1])
+        self.assertEqual(action["type"], "ir.actions.act_window")
+        self.assertEqual(second_bill.payment_reference, first_bill.payment_reference)
+        _third_bill, duplicate_action = self._import(payload_text=monthly_payloads[2])
+        self.assertEqual(duplicate_action["tag"], "display_notification")
+        self.assertEqual(duplicate_action["params"]["links"], [
+            {"label": first_bill.display_name, "url": f"/odoo/account.move/{first_bill.id}"},
+        ])
+
+    def test_same_swico_invoice_number_is_duplicate(self):
+        first_bill, _action = self._import(payload_text=self.k_address_payload)
+        second_bill, action = self._import(payload_text=_with_lines(self.k_address_payload, {18: "100.00", 28: OTHER_QR_REFERENCE}))
+        self.assertEqual(second_bill.ref, first_bill.ref)
+        self.assertNotEqual(second_bill.payment_reference, first_bill.payment_reference)
+        self.assertEqual(action["tag"], "display_notification")
+        self.assertEqual(action["params"]["links"], [
+            {"label": first_bill.display_name, "url": f"/odoo/account.move/{first_bill.id}"},
+        ])
+
     def test_new_vendor_is_created_from_structured_address(self):
         payload_text = _with_iban(self.qrr_payload, self.other_vendor_qr_iban).replace(
             "Max Muster & Söhne (sample company)", "Muster Lieferant AG",

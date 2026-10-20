@@ -200,16 +200,19 @@ class DevarcQrBillImport(models.TransientModel):
         )
 
     def _find_duplicate_bills(self, bill):
-        references = [
-            (field_name, bill[field_name])
-            for field_name in ("payment_reference", "ref")
-            if bill[field_name]
-        ]
-        if not references:
+        reference_domains = []
+        if bill.payment_reference:
+            reference_domains.append([
+                "&", "&",
+                ("payment_reference", "=", bill.payment_reference),
+                ("currency_id", "=", bill.currency_id.id),
+                ("amount_total", "=", bill.amount_total),
+            ])
+        if bill.ref:
+            reference_domains.append([("ref", "=", bill.ref)])
+        if not reference_domains:
             return self.env["account.move"]
-        reference_domain = [(field_name, "=", value) for field_name, value in references]
-        if len(reference_domain) > 1:
-            reference_domain = ["|", *reference_domain]
+        reference_domain = ["|"] * (len(reference_domains) - 1) + [term for domain in reference_domains for term in domain]
         return self.env["account.move"].search([
             ("id", "!=", bill.id),
             ("move_type", "=", "in_invoice"),
