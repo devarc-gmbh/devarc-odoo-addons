@@ -1,0 +1,16 @@
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">DevArc QR Reconcile</h2>
+        <h3 class="oe_slogan">Match Swiss QRR and SCOR payments from camt files to customer invoices</h3>
+        <ul class="oe_mt32">
+            <li>Reads the QRR or SCOR reference from the reference, label and notes of camt.053 and camt.054 statement lines and links the one open customer invoice with that payment reference.</li>
+            <li>Journal setting QR Reference Matching: Mark matched invoice (default) only links and proposes the invoice in the reconciliation widget. Reconcile exact matches also reconciles when the amount equals the invoice residual, the currency is the same, the amount is positive and the partner matches.</li>
+            <li>Partial payments, overpayments and other currencies are only linked and proposed. A reference that matches no open invoice or more than one links no invoice; the line is listed under the filter QR Reference Without Invoice.</li>
+            <li>Filters on statement lines: QR Invoice Found and QR Reference Without Invoice.</li>
+            <li>Vendor payments are left to OCA. Importing the same camt file twice creates the lines twice, the OCA camt import has no deduplication.</li>
+        </ul>
+        <h3 class="oe_mt32">Requirements</h3>
+        <p>OCA modules account_reconcile_oca (OCA/account-reconcile), account_statement_import_camt, account_statement_import_camt54 and account_statement_import_file_reconcile_oca (OCA/bank-statement-import), branch 19.0. License AGPL-3.</p>
+        <p>Made by <a href="https://devarc.ch">DevArc GmbH</a>, Switzerland. Support: info@devarc.ch</p>
+    </div>
+</section>

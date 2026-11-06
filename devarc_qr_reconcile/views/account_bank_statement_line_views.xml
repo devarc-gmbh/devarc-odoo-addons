@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="account_bank_statement_line_search" model="ir.ui.view">
+        <field name="name">account.bank.statement.line.search.devarc.qr.reconcile</field>
+        <field name="model">account.bank.statement.line</field>
+        <field name="inherit_id" ref="account_reconcile_oca.account_bank_statement_line_search" />
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <field name="devarc_qr_reference" />
+                <field name="devarc_qr_move_id" />
+                <separator />
+                <filter
+                    name="devarc_qr_invoice_found"
+                    string="QR Invoice Found"
+                    domain="[('devarc_qr_move_id.state', '=', 'posted'), ('devarc_qr_move_id.payment_state', 'in', ('not_paid', 'partial')), ('is_reconciled', '=', False)]"
+                />
+                <filter
+                    name="devarc_qr_reference_unmatched"
+                    string="QR Reference Without Invoice"
+                    domain="[('devarc_qr_reference', '!=', False), ('devarc_qr_move_id', '=', False), ('is_reconciled', '=', False)]"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="account_bank_statement_line_tree" model="ir.ui.view">
+        <field name="name">account.bank.statement.line.list.devarc.qr.reconcile</field>
+        <field name="model">account.bank.statement.line</field>
+        <field name="inherit_id" ref="account_statement_base.account_bank_statement_line_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//list" position="inside">
+                <field name="devarc_qr_reference" optional="hide" />
+                <field name="devarc_qr_move_id" optional="show" readonly="1" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="bank_statement_line_reconcile_view" model="ir.ui.view">
+        <field name="name">account.bank.statement.line.reconcile.devarc.qr.reconcile</field>
+        <field name="model">account.bank.statement.line</field>
+        <field name="inherit_id" ref="account_reconcile_oca.bank_statement_line_reconcile_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id'][@widget='badge']" position="after">
+                <field name="devarc_qr_move_id" widget="badge" invisible="not devarc_qr_move_id" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

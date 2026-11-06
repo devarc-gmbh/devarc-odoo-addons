@@ -1,0 +1,114 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* devarc_qr_reconcile
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-20 08:46+0000\n"
+"PO-Revision-Date: 2026-10-20 08:46+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: devarc_qr_reconcile
+#: model:ir.model,name:devarc_qr_reconcile.model_account_bank_statement_line
+msgid "Bank Statement Line"
+msgstr ""
+
+#. module: devarc_qr_reconcile
+#: model:ir.model.fields,field_description:devarc_qr_reconcile.field_account_bank_statement_line__display_name
+#: model:ir.model.fields,field_description:devarc_qr_reconcile.field_account_journal__display_name
+#: model:ir.model.fields,field_description:devarc_qr_reconcile.field_account_statement_import__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: devarc_qr_reconcile
+#: model:ir.model.fields,field_description:devarc_qr_reconcile.field_account_bank_statement_line__id
+#: model:ir.model.fields,field_description:devarc_qr_reconcile.field_account_journal__id
+#: model:ir.model.fields,field_description:devarc_qr_reconcile.field_account_statement_import__id
+msgid "ID"
+msgstr ""
+
+#. module: devarc_qr_reconcile
+#: model:ir.model,name:devarc_qr_reconcile.model_account_statement_import
+msgid "Import Bank Statement Files"
+msgstr ""
+
+#. module: devarc_qr_reconcile
+#: model:ir.model.fields,field_description:devarc_qr_reconcile.field_account_statement_import__devarc_imported_journal_id
+msgid "Imported Journal"
+msgstr ""
+
+#. module: devarc_qr_reconcile
+#: model:ir.model,name:devarc_qr_reconcile.model_account_journal
+msgid "Journal"
+msgstr ""
+
+#. module: devarc_qr_reconcile
+#: model:ir.model.fields,help:devarc_qr_reconcile.field_account_statement_import__devarc_imported_journal_id
+msgid "Journal of the bank statements created by this import."
+msgstr ""
+
+#. module: devarc_qr_reconcile
+#: model:ir.model.fields.selection,name:devarc_qr_reconcile.selection__account_journal__devarc_qr_reconcile_mode__mark
+msgid "Mark matched invoice"
+msgstr ""
+
+#. module: devarc_qr_reconcile
+#: model:ir.model.fields,help:devarc_qr_reconcile.field_account_journal__devarc_qr_reconcile_mode
+msgid ""
+"Mark: statement lines carrying a QRR or SCOR reference of exactly one open "
+"customer invoice get that invoice linked and proposed, nothing is "
+"reconciled. Reconcile exact matches: additionally reconcile the line when "
+"its amount equals the invoice residual; partial payments and overpayments "
+"are only linked. A reference without exactly one open invoice links no "
+"invoice, the line is listed under the filter QR Reference Without Invoice."
+msgstr ""
+
+#. module: devarc_qr_reconcile
+#: model:ir.model.fields,field_description:devarc_qr_reconcile.field_account_bank_statement_line__devarc_qr_move_id
+msgid "QR Invoice"
+msgstr ""
+
+#. module: devarc_qr_reconcile
+#: model_terms:ir.ui.view,arch_db:devarc_qr_reconcile.account_bank_statement_line_search
+msgid "QR Invoice Found"
+msgstr ""
+
+#. module: devarc_qr_reconcile
+#: model:ir.model.fields,field_description:devarc_qr_reconcile.field_account_bank_statement_line__devarc_qr_reference
+msgid "QR Reference"
+msgstr ""
+
+#. module: devarc_qr_reconcile
+#: model:ir.model.fields,field_description:devarc_qr_reconcile.field_account_journal__devarc_qr_reconcile_mode
+msgid "QR Reference Matching"
+msgstr ""
+
+#. module: devarc_qr_reconcile
+#: model_terms:ir.ui.view,arch_db:devarc_qr_reconcile.account_bank_statement_line_search
+msgid "QR Reference Without Invoice"
+msgstr ""
+
+#. module: devarc_qr_reconcile
+#: model:ir.model.fields,help:devarc_qr_reconcile.field_account_bank_statement_line__devarc_qr_reference
+msgid ""
+"QRR or SCOR reference found in the reference, label or notes of the line."
+msgstr ""
+
+#. module: devarc_qr_reconcile
+#: model:ir.model.fields.selection,name:devarc_qr_reconcile.selection__account_journal__devarc_qr_reconcile_mode__auto
+msgid "Reconcile exact matches"
+msgstr ""
+
+#. module: devarc_qr_reconcile
+#: model:ir.model.fields,help:devarc_qr_reconcile.field_account_bank_statement_line__devarc_qr_move_id
+msgid ""
+"The only open customer invoice whose payment reference equals the QR "
+"reference of this line."
+msgstr ""

@@ -1,0 +1,31 @@
+SPC
+0200
+1
+CH5800791123000889012
+S
+Max Muster & Söhne
+Musterstrasse
+123
+8000
+Seldwyla
+CH
+
+
+
+
+
+
+
+250.50
+EUR
+S
+Simon Muster
+Musterstrasse
+1
+8000
+Seldwyla
+CH
+SCOR
+RF18539007547034
+TEST - NEPLATIT Invoice 2026-001
+EPD

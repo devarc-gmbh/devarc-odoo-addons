@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:camt.053.001.04">
+  <BkToCstmrStmt>
+    <GrpHdr>
+      <MsgId>DEVARC-QR-053-0001</MsgId>
+      <CreDtTm>2026-10-16T08:00:00</CreDtTm>
+    </GrpHdr>
+    <Stmt>
+      <Id>DEVARC-QR-053-STMT-0001</Id>
+      <CreDtTm>2026-10-16T08:00:00</CreDtTm>
+      <Acct>
+        <Id>
+          <IBAN>CH5604835012345678009</IBAN>
+        </Id>
+        <Ccy>CHF</Ccy>
+      </Acct>
+      <Bal>
+        <Tp>
+          <CdOrPrtry>
+            <Cd>OPBD</Cd>
+          </CdOrPrtry>
+        </Tp>
+        <Amt Ccy="CHF">1000.00</Amt>
+        <CdtDbtInd>CRDT</CdtDbtInd>
+        <Dt>
+          <Dt>2026-10-16</Dt>
+        </Dt>
+      </Bal>
+      <Bal>
+        <Tp>
+          <CdOrPrtry>
+            <Cd>CLBD</Cd>
+          </CdOrPrtry>
+        </Tp>
+        <Amt Ccy="CHF">1800.00</Amt>
+        <CdtDbtInd>CRDT</CdtDbtInd>
+        <Dt>
+          <Dt>2026-10-16</Dt>
+        </Dt>
+      </Bal>
+      <Ntry>
+        <Amt Ccy="CHF">750.00</Amt>
+        <CdtDbtInd>CRDT</CdtDbtInd>
+        <Sts>BOOK</Sts>
+        <BookgDt>
+          <Dt>2026-10-16</Dt>
+        </BookgDt>
+        <ValDt>
+          <Dt>2026-10-16</Dt>
+        </ValDt>
+        <AcctSvcrRef>DEVARC-QR-053-ENTRY-0001</AcctSvcrRef>
+        <BkTxCd>
+          <Domn>
+            <Cd>PMNT</Cd>
+            <Fmly>
+              <Cd>RCDT</Cd>
+              <SubFmlyCd>VCOM</SubFmlyCd>
+            </Fmly>
+          </Domn>
+        </BkTxCd>
+        <NtryDtls>
+          <RmtInf>
+            <Strd>
+              <CdtrRefInf>
+                <Tp>
+                  <CdOrPrtry>
+                    <Prtry>QRR</Prtry>
+                  </CdOrPrtry>
+                </Tp>
+                <Ref>000000000000000000000010067</Ref>
+              </CdtrRefInf>
+            </Strd>
+          </RmtInf>
+        </NtryDtls>
+        <AddtlNtryInf>Gutschrift QR-Rechnung</AddtlNtryInf>
+      </Ntry>
+      <Ntry>
+        <Amt Ccy="CHF">50.00</Amt>
+        <CdtDbtInd>CRDT</CdtDbtInd>
+        <Sts>BOOK</Sts>
+        <BookgDt>
+          <Dt>2026-10-16</Dt>
+        </BookgDt>
+        <ValDt>
+          <Dt>2026-10-16</Dt>
+        </ValDt>
+        <AcctSvcrRef>DEVARC-QR-053-ENTRY-0002</AcctSvcrRef>
+        <NtryDtls>
+          <TxDtls>
+            <Refs>
+              <EndToEndId>NOTPROVIDED</EndToEndId>
+            </Refs>
+            <Amt Ccy="CHF">50.00</Amt>
+            <CdtDbtInd>CRDT</CdtDbtInd>
+            <RmtInf>
+              <Ustrd>Spende ohne Referenz</Ustrd>
+            </RmtInf>
+          </TxDtls>
+        </NtryDtls>
+      </Ntry>
+    </Stmt>
+  </BkToCstmrStmt>
+</Document>
