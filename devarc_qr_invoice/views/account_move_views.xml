@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_move_form_qr" model="ir.ui.view">
+        <field name="name">account.move.form.devarc.qr</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="%(devarc_qr_invoice.action_devarc_qr_bill_import)d"
+                        string="Read QR-bill"
+                        type="action"
+                        context="{'default_move_id': id}"
+                        invisible="not id or state != 'draft' or move_type != 'in_invoice'"
+                        groups="account.group_account_invoice"/>
+            </xpath>
+            <xpath expr="//sheet" position="before">
+                <div name="devarc_qr_bill_warning"
+                     class="alert alert-warning mb-0"
+                     role="alert"
+                     invisible="not devarc_qr_bill_error">
+                    <field name="devarc_qr_bill_error"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_in_invoice_bill_tree_qr" model="ir.ui.view">
+        <field name="name">account.move.list.bill.devarc.qr</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_in_invoice_bill_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="%(devarc_qr_invoice.action_devarc_qr_bill_import)d"
+                        string="Import QR-bill"
+                        type="action"
+                        display="always"
+                        groups="account.group_account_invoice"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
