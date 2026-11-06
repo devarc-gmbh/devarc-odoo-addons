@@ -5,6 +5,9 @@ Odoo 19.0 Community Edition addons by [DevArc GmbH](https://devarc.ch/en), Pratt
 | Addon | Version | Odoo | License | What it does |
 |---|---|---|---|---|
 | [devarc_qr_invoice](devarc_qr_invoice) | 19.0.2.1.0 | 19.0 CE | LGPL-3 | Import of vendor Swiss QR-bills from scanner text, PDF or photo, plus QR-bill checks for customer invoices on top of l10n_ch |
+| [devarc_qr_reconcile](devarc_qr_reconcile) | 19.0.1.1.1 | 19.0 CE | AGPL-3 | Matches QRR/SCOR payments from camt.053/054 to customer invoices on top of OCA reconciliation |
+
+The same addons are available for Odoo 18.0 on the `18.0` branch; `devarc_qr_invoice` is also available for Odoo 20.0 on the `20.0` branch.
 
 ## Installation
 
@@ -20,18 +23,23 @@ Odoo 19.0 Community Edition addons by [DevArc GmbH](https://devarc.ch/en), Pratt
    pip install zxing-cpp pypdfium2
    ```
 
-3. Add the folder of this repository to `addons_path` in your Odoo configuration.
-4. Update the Apps list and install **DevArc QR Invoice**.
+3. For `devarc_qr_reconcile` clone these OCA repositories on branch 19.0 and add them to `addons_path`:
+   - [OCA/bank-statement-import](https://github.com/OCA/bank-statement-import/tree/19.0)
+     (`account_statement_import_camt`, `account_statement_import_camt54`, `account_statement_import_file_reconcile_oca`)
+   - [OCA/account-reconcile](https://github.com/OCA/account-reconcile/tree/19.0) (`account_reconcile_oca`)
+4. Add the folder of this repository to `addons_path` in your Odoo configuration.
+5. Update the Apps list and install **DevArc QR Invoice** and **DevArc QR Reconcile**.
 
 ## Tests
 
 ```
-odoo-bin -d <db> -i devarc_qr_invoice --test-enable --test-tags=/devarc_qr_invoice --stop-after-init
+odoo-bin -d <db> -i devarc_qr_invoice,devarc_qr_reconcile --test-enable --test-tags=/devarc_qr_invoice,/devarc_qr_reconcile --stop-after-init
 ```
 
 ## License
 
-`devarc_qr_invoice` is licensed under LGPL-3, see [LICENSE](LICENSE).
+- `devarc_qr_invoice`: LGPL-3, see [LICENSE](LICENSE).
+- `devarc_qr_reconcile`: AGPL-3, because it depends on AGPL-3 OCA modules, see [devarc_qr_reconcile/LICENSE](devarc_qr_reconcile/LICENSE).
 
 ## Contact
 
