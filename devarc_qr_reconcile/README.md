@@ -56,4 +56,6 @@ AGPL-3, because the dependencies are AGPL-3.
 
 ## Support
 
+Video walkthrough: https://youtu.be/EXF_1ktpaHc
+
 DevArc GmbH, https://devarc.ch, info@devarc.ch

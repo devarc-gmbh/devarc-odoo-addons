@@ -43,6 +43,11 @@ odoo-bin -d <db> -i devarc_qr_invoice,devarc_qr_reconcile --test-enable --test-t
 - `devarc_qr_invoice`: LGPL-3, see [LICENSE](LICENSE).
 - `devarc_qr_reconcile`: AGPL-3, because it depends on AGPL-3 OCA modules, see [devarc_qr_reconcile/LICENSE](devarc_qr_reconcile/LICENSE).
 
-## Contact
+## Contact and links
 
 Open an issue in this repository or write to info@devarc.ch.
+
+- Web: https://devarc.ch/en
+- Blog: https://devarc.ch/blog
+- YouTube (videos of these addons): https://www.youtube.com/@DevArc
+- LinkedIn: https://www.linkedin.com/company/devarc-gmbh/
