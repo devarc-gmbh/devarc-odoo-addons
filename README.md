@@ -35,6 +35,11 @@ odoo-bin -d <db> -i devarc_qr_invoice --test-enable --test-tags=/devarc_qr_invoi
 
 `devarc_qr_invoice` is licensed under LGPL-3, see [LICENSE](LICENSE).
 
-## Contact
+## Contact and links
 
 Open an issue in this repository or write to info@devarc.ch.
+
+- Web: https://devarc.ch/en
+- Blog: https://devarc.ch/blog
+- YouTube (videos of these addons): https://www.youtube.com/@DevArc
+- LinkedIn: https://www.linkedin.com/company/devarc-gmbh/

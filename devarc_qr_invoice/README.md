@@ -74,4 +74,6 @@ LGPL-3.
 
 ## Support
 
+Video walkthrough: https://youtu.be/f1qQrzFjM_E
+
 DevArc GmbH, https://devarc.ch, info@devarc.ch
