@@ -1,12 +1,12 @@
 # pylama:ignore=D100,C0114
 {
     "name": "DevArc QR Reconcile",
-    "version": "19.0.1.1.1",
+    "version": "19.0.1.1.2",
     "category": "Accounting/Localizations",
     "summary": "Match Swiss QRR and SCOR payments from camt statements to customer invoices",
     "author": "DevArc GmbH",
     "maintainer": "DevArc GmbH",
-    "support": "info@devarc.ch",
+    "support": "odoo@devarc.ch",
     "website": "https://devarc.ch",
     "license": "AGPL-3",
     "depends": [
@@ -19,5 +19,6 @@
         "views/account_journal_views.xml",
         "views/account_bank_statement_line_views.xml",
     ],
+    "images": ["static/description/banner.png"],
     "installable": True,
 }
