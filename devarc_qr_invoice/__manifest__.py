@@ -1,12 +1,12 @@
 # pylama:ignore=D100,C0114
 {
     "name": "DevArc QR Invoice",
-    "version": "18.0.2.1.0",
+    "version": "18.0.2.1.1",
     "category": "Accounting/Localizations",
     "summary": "Import vendor Swiss QR-bills from scanner text, PDF or photo, plus QR-bill checks for customer invoices on top of l10n_ch",
     "author": "DevArc GmbH",
     "maintainer": "DevArc GmbH",
-    "support": "info@devarc.ch",
+    "support": "odoo@devarc.ch",
     "website": "https://devarc.ch",
     "license": "LGPL-3",
     "depends": [
