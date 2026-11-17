@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="frontend_layout_view_as_banner" inherit_id="web.frontend_layout" name="Portal view-as banner">
+        <xpath expr="//div[@id='wrapwrap']" position="before">
+            <t t-set="view_as_banner" t-value="request and request.env['res.users']._portal_view_as_banner_values()"/>
+            <div t-if="view_as_banner" class="o_portal_view_as_banner alert alert-warning rounded-0 mb-0 py-2 d-flex flex-wrap align-items-center gap-2" role="alert">
+                <span>
+                    You are viewing the portal as <strong t-out="view_as_banner['target_name']"/>
+                    until <span t-out="view_as_banner['expires_at']" t-options="{'widget': 'datetime'}"/>.
+                </span>
+                <form action="/portal_login_as/return" method="post" class="ms-auto">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <button type="submit" class="btn btn-sm btn-dark">Return</button>
+                </form>
+            </div>
+        </xpath>
+    </template>
+</odoo>

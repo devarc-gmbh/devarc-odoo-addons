@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_portal_login_as_log_my_customers,devarc.portal.login.as.log my customers,model_devarc_portal_login_as_log,group_view_my_customers,1,0,0,0
+access_portal_login_as_log_system,devarc.portal.login.as.log system,model_devarc_portal_login_as_log,base.group_system,1,1,0,0
+access_portal_login_as_wizard_my_customers,devarc.portal.login.as.wizard my customers,model_devarc_portal_login_as_wizard,group_view_my_customers,1,1,1,1
