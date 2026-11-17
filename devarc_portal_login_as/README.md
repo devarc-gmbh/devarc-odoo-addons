@@ -1,6 +1,6 @@
 # DevArc Portal Login As
 
-Lets authorised staff of an Odoo 19 Community database see the customer portal exactly as a portal
+Lets authorised staff of an Odoo 20 Community database see the customer portal exactly as a portal
 user sees it. The staff member gives a reason, confirms their own password and the browser session
 switches to the portal user for at most 30 minutes. Every session is recorded in an audit log and the
 customer gets a notification.
