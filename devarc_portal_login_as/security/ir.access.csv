@@ -1,0 +1,7 @@
+id,name,model_id,group_id/id,operation,domain
+access_portal_login_as_log_my_customers,Portal view-as log: own sessions,devarc.portal.login.as.log,group_view_my_customers,r,"[('origin_user_id', '=', user.id)]"
+access_portal_login_as_log_all_portal,Portal view-as log: all sessions,devarc.portal.login.as.log,group_view_all_portal,r,
+access_portal_login_as_log_system,devarc.portal.login.as.log system,devarc.portal.login.as.log,base.group_system,u,
+access_portal_login_as_log_system_read,devarc.portal.login.as.log system read,devarc.portal.login.as.log,base.group_system,r,"[('origin_user_id', '=', user.id)] if user.has_group('devarc_portal_login_as.group_view_my_customers') else []"
+access_portal_login_as_wizard_my_customers,devarc.portal.login.as.wizard my customers,devarc.portal.login.as.wizard,group_view_my_customers,crud,
+rule_log_company,Portal view-as log: multi-company,devarc.portal.login.as.log,,crud,"[('company_id', 'in', company_ids)]"

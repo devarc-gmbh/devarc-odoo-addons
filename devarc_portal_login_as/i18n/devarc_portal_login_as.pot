@@ -1,0 +1,622 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* devarc_portal_login_as
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-21 20:31+0000\n"
+"PO-Revision-Date: 2026-10-21 20:31+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: devarc_portal_login_as
+#. odoo-python
+#: code:addons/devarc_portal_login_as/wizard/portal_login_as_wizard.py:0
+msgid "%(company)s opened your customer portal"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#. odoo-python
+#: code:addons/devarc_portal_login_as/wizard/portal_login_as_wizard.py:0
+msgid ""
+"%(user)s from %(company)s is viewing your customer portal as you. The access"
+" ends automatically after %(minutes)s minutes."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model_terms:ir.ui.view,arch_db:devarc_portal_login_as.view_partner_form_inherit_portal_login_as
+msgid "<span class=\"o_stat_text\">View as customer</span>"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields.selection,name:devarc_portal_login_as.selection__devarc_portal_login_as_log__state__active
+#: model_terms:ir.ui.view,arch_db:devarc_portal_login_as.portal_login_as_log_view_search
+msgid "Active"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,help:devarc_portal_login_as.field_devarc_portal_login_as_log__state
+msgid "Active while the view-as session may still be used."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,help:devarc_portal_login_as.field_devarc_portal_login_as_log__user_agent
+msgid "Browser that started the view-as session."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_res_partner__can_view_as_customer
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_res_users__can_view_as_customer
+msgid "Can View As Customer"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model_terms:ir.ui.view,arch_db:devarc_portal_login_as.portal_login_as_wizard_view_form
+msgid "Cancel"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,help:devarc_portal_login_as.field_devarc_portal_login_as_log__partner_id
+msgid ""
+"Commercial partner of the portal user when the view-as session started."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__company_id
+msgid "Company"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,help:devarc_portal_login_as.field_devarc_portal_login_as_log__company_id
+msgid "Company of the user who started the view-as session."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model,name:devarc_portal_login_as.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__create_uid
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__create_date
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__partner_id
+#: model_terms:ir.ui.view,arch_db:devarc_portal_login_as.portal_login_as_log_view_search
+msgid "Customer"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__display_name
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_wizard__display_name
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_ir_http__display_name
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_ir_websocket__display_name
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_res_partner__display_name
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_res_users__display_name
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_res_users_identitycheck__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__end_reason
+msgid "End Reason"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model_terms:ir.ui.view,arch_db:devarc_portal_login_as.portal_login_as_log_view_search
+msgid "End reason"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields.selection,name:devarc_portal_login_as.selection__devarc_portal_login_as_log__state__ended
+#: model_terms:ir.ui.view,arch_db:devarc_portal_login_as.portal_login_as_log_view_search
+msgid "Ended"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__end_at
+msgid "Ended at"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model_terms:ir.actions.act_window,help:devarc_portal_login_as.action_portal_login_as_log
+msgid ""
+"Every time staff views the customer portal as a portal user, the session is "
+"recorded here."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields.selection,name:devarc_portal_login_as.selection__devarc_portal_login_as_log__end_reason__expired
+msgid "Expired"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__expires_at
+msgid "Expires at"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model,name:devarc_portal_login_as.model_ir_http
+msgid "HTTP Routing"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,help:devarc_portal_login_as.field_devarc_portal_login_as_log__end_reason
+msgid "How the view-as session ended."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__id
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_wizard__id
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_ir_http__id
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_ir_websocket__id
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_res_partner__id
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_res_users__id
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_res_users_identitycheck__id
+msgid "ID"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__ip_address
+msgid "IP address"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,help:devarc_portal_login_as.field_devarc_portal_login_as_log__ip_address
+msgid "IP address the view-as session was started from."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,help:devarc_portal_login_as.field_devarc_portal_login_as_log__session_identifier
+msgid ""
+"Identifier of the browser session used for the view-as session, deleted when"
+" the session ends."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,help:devarc_portal_login_as.field_devarc_portal_login_as_log__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,help:devarc_portal_login_as.field_devarc_portal_login_as_log__message_has_error
+#: model:ir.model.fields,help:devarc_portal_login_as.field_devarc_portal_login_as_log__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,help:devarc_portal_login_as.field_devarc_portal_login_as_log__origin_user_id
+msgid ""
+"Internal user who viewed the portal as the customer. Empty once the user is "
+"deleted."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__is_expired
+msgid "Is Expired"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__write_uid
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__write_date
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:res.groups,name:devarc_portal_login_as.group_view_all_portal
+msgid "Login As: all portal users"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:res.groups,name:devarc_portal_login_as.group_view_my_customers
+msgid "Login As: my customers"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields.selection,name:devarc_portal_login_as.selection__devarc_portal_login_as_log__end_reason__logout
+msgid "Logout"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,help:devarc_portal_login_as.field_devarc_portal_login_as_log__origin_name
+msgid ""
+"Name of the internal user when the view-as session started, kept after the "
+"user is deleted."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,help:devarc_portal_login_as.field_devarc_portal_login_as_log__target_name
+msgid ""
+"Name of the portal user when the view-as session started, kept after the "
+"user is deleted."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model_terms:ir.actions.act_window,help:devarc_portal_login_as.action_portal_login_as_log
+msgid "No portal view-as sessions yet"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,help:devarc_portal_login_as.field_devarc_portal_login_as_log__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,help:devarc_portal_login_as.field_devarc_portal_login_as_log__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#. odoo-python
+#: code:addons/devarc_portal_login_as/models/res_users.py:0
+msgid "Only active portal users can be viewed as a customer."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#. odoo-python
+#: code:addons/devarc_portal_login_as/models/portal_login_as_log.py:0
+msgid "Only administrators can stop a view-as session."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields.selection,name:devarc_portal_login_as.selection__devarc_portal_login_as_log__end_reason__fingerprint_mismatch
+msgid "Origin user changed"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model,name:devarc_portal_login_as.model_res_users_identitycheck
+msgid "Password Check Wizard"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.module.category,name:devarc_portal_login_as.module_category_portal_login_as
+#: model:res.groups.privilege,name:devarc_portal_login_as.res_groups_privilege_portal_login_as
+msgid "Portal Login As"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model,name:devarc_portal_login_as.model_devarc_portal_login_as_log
+msgid "Portal View-As Log"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.actions.server,name:devarc_portal_login_as.ir_cron_close_expired_view_as_ir_actions_server
+msgid "Portal View-As: close expired sessions"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__target_user_id
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_wizard__target_user_id
+msgid "Portal user"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__target_name
+msgid "Portal user (name)"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_res_partner__portal_login_as_user_id
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_res_users__portal_login_as_user_id
+msgid "Portal user to view as"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,help:devarc_portal_login_as.field_devarc_portal_login_as_log__target_user_id
+msgid "Portal user whose portal was viewed. Empty once the user is deleted."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,help:devarc_portal_login_as.field_devarc_portal_login_as_wizard__target_user_id
+msgid "Portal user whose portal you want to see."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.ui.menu,name:devarc_portal_login_as.menu_portal_login_as_root
+msgid "Portal view-as"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.actions.act_window,name:devarc_portal_login_as.action_portal_login_as_log
+#: model:ir.ui.menu,name:devarc_portal_login_as.menu_portal_login_as_log
+#: model_terms:ir.ui.view,arch_db:devarc_portal_login_as.portal_login_as_log_view_list
+#: model_terms:ir.ui.view,arch_db:devarc_portal_login_as.portal_login_as_log_view_search
+msgid "Portal view-as log"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model_terms:ir.ui.view,arch_db:devarc_portal_login_as.portal_login_as_log_view_form
+msgid "Portal view-as session"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__reason
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_wizard__reason
+msgid "Reason"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model_terms:ir.ui.view,arch_db:devarc_portal_login_as.frontend_layout_view_as_banner
+msgid "Return"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields.selection,name:devarc_portal_login_as.selection__devarc_portal_login_as_log__end_reason__returned
+msgid "Returned"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#. odoo-python
+#: code:addons/devarc_portal_login_as/models/res_users_identitycheck.py:0
+msgid ""
+"Security settings cannot be changed while viewing the portal as a customer."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__session_identifier
+msgid "Session Identifier"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields.selection,name:devarc_portal_login_as.selection__devarc_portal_login_as_log__end_reason__session_changed
+msgid "Session changed"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model_terms:ir.ui.view,arch_db:devarc_portal_login_as.portal_login_as_wizard_view_form
+msgid "Start"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model_terms:ir.ui.view,arch_db:devarc_portal_login_as.portal_login_as_log_view_search
+msgid "Started"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__start_at
+msgid "Started at"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__state
+msgid "State"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model_terms:ir.ui.view,arch_db:devarc_portal_login_as.portal_login_as_log_view_form
+msgid "Stop"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields.selection,name:devarc_portal_login_as.selection__devarc_portal_login_as_log__end_reason__stopped_by_admin
+msgid "Stopped by admin"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,help:devarc_portal_login_as.field_res_partner__can_view_as_customer
+msgid ""
+"The current user may view the portal as the only portal user of this "
+"contact."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,help:devarc_portal_login_as.field_res_users__can_view_as_customer
+msgid "The current user may view the portal as this user."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,help:devarc_portal_login_as.field_res_partner__portal_login_as_user_id
+#: model:ir.model.fields,help:devarc_portal_login_as.field_res_users__portal_login_as_user_id
+msgid "The only active portal user of this contact, if there is exactly one."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#. odoo-python
+#: code:addons/devarc_portal_login_as/models/res_users.py:0
+msgid "The portal user belongs to a company you have no access to."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,help:devarc_portal_login_as.field_devarc_portal_login_as_log__is_expired
+msgid "The session is still active but past its expiry time."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model_terms:ir.ui.view,arch_db:devarc_portal_login_as.portal_login_as_log_view_form
+msgid ""
+"The view-as session will end and its next request will log out. Continue?"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#. odoo-python
+#: code:addons/devarc_portal_login_as/models/res_partner.py:0
+msgid "This contact has no single active portal user."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#. odoo-python
+#: code:addons/devarc_portal_login_as/models/portal_login_as_log.py:0
+msgid "This view-as session has already ended."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model,name:devarc_portal_login_as.model_res_users
+msgid "User"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__user_agent
+msgid "User Agent"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model,name:devarc_portal_login_as.model_devarc_portal_login_as_wizard
+msgid "View Portal as Customer"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.actions.act_window,name:devarc_portal_login_as.action_portal_login_as_wizard
+#: model_terms:ir.ui.view,arch_db:devarc_portal_login_as.portal_login_as_wizard_view_form
+#: model_terms:ir.ui.view,arch_db:devarc_portal_login_as.view_users_form_inherit_portal_login_as
+msgid "View as customer"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__origin_user_id
+#: model_terms:ir.ui.view,arch_db:devarc_portal_login_as.portal_login_as_log_view_search
+msgid "Viewed by"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__origin_name
+msgid "Viewed by (name)"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,field_description:devarc_portal_login_as.field_devarc_portal_login_as_log__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,help:devarc_portal_login_as.field_devarc_portal_login_as_log__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,help:devarc_portal_login_as.field_devarc_portal_login_as_log__end_at
+msgid "When the view-as session ended."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,help:devarc_portal_login_as.field_devarc_portal_login_as_log__expires_at
+msgid "When the view-as session ends automatically."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,help:devarc_portal_login_as.field_devarc_portal_login_as_log__start_at
+msgid "When the view-as session started."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model_terms:ir.ui.view,arch_db:devarc_portal_login_as.portal_login_as_wizard_view_form
+msgid "Why do you need to see the portal as this customer?"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,help:devarc_portal_login_as.field_devarc_portal_login_as_log__reason
+msgid "Why the portal was viewed as the customer."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model.fields,help:devarc_portal_login_as.field_devarc_portal_login_as_wizard__reason
+msgid ""
+"Why you need to see the portal as this customer. Stored in the audit log."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#. odoo-python
+#: code:addons/devarc_portal_login_as/wizard/portal_login_as_wizard.py:0
+msgid "You are already viewing the portal as a customer. Return first."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#. odoo-python
+#: code:addons/devarc_portal_login_as/models/res_users.py:0
+msgid "You are not allowed to view the portal as a customer."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model_terms:ir.ui.view,arch_db:devarc_portal_login_as.frontend_layout_view_as_banner
+msgid "You are viewing the portal as"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#. odoo-python
+#: code:addons/devarc_portal_login_as/models/res_users.py:0
+msgid "You can only view the portal of your own customers."
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model_terms:ir.ui.view,arch_db:devarc_portal_login_as.frontend_layout_view_as_banner
+msgid "until"
+msgstr ""
+
+#. module: devarc_portal_login_as
+#: model:ir.model,name:devarc_portal_login_as.model_ir_websocket
+msgid "websocket message handling"
+msgstr ""
