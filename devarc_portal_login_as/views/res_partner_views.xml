@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_inherit_portal_login_as" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.portal.login.as</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <field name="can_view_as_customer" invisible="1"/>
+                <button name="action_view_as_customer" type="object" class="oe_stat_button" icon="fa-eye" invisible="not can_view_as_customer">
+                    <div class="o_stat_info">
+                        <span class="o_stat_text">View as customer</span>
+                    </div>
+                </button>
+            </div>
+        </field>
+    </record>
+</odoo>
