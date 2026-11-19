@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ai_assistant_access_user,ai.assistant.access user,model_ai_assistant_access,base.group_user,1,0,0,0
+access_ai_assistant_access_system,ai.assistant.access system,model_ai_assistant_access,base.group_system,1,1,1,1
+access_ai_assistant_audit_system,ai.assistant.audit system,model_ai_assistant_audit,base.group_system,1,0,0,0
+access_ai_assistant_pairing_user,ai.assistant.pairing user,model_ai_assistant_pairing,base.group_user,1,1,1,0

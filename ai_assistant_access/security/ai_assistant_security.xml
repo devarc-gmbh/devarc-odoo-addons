@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="ai_assistant_access_rule_own" model="ir.rule">
+    <field name="name">AI assistant - own access</field>
+    <field name="model_id" ref="model_ai_assistant_access" />
+    <field name="domain_force">[('user_id', '=', user.id)]</field>
+    <field name="groups" eval="[(4, ref('base.group_user'))]" />
+    <field name="perm_read" eval="True" />
+    <field name="perm_write" eval="True" />
+    <field name="perm_create" eval="True" />
+    <field name="perm_unlink" eval="False" />
+  </record>
+
+  <record id="ai_assistant_access_rule_admin" model="ir.rule">
+    <field name="name">AI assistant - administrator sees every access</field>
+    <field name="model_id" ref="model_ai_assistant_access" />
+    <field name="domain_force">[(1, '=', 1)]</field>
+    <field name="groups" eval="[(4, ref('base.group_system'))]" />
+    <field name="perm_read" eval="True" />
+    <field name="perm_write" eval="True" />
+    <field name="perm_create" eval="True" />
+    <field name="perm_unlink" eval="True" />
+  </record>
+</odoo>

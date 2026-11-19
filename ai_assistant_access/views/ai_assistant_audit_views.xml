@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="view_ai_assistant_audit_list" model="ir.ui.view">
+    <field name="name">ai.assistant.audit.list</field>
+    <field name="model">ai.assistant.audit</field>
+    <field name="arch" type="xml">
+      <list string="AI assistant audit" create="false" edit="false" delete="false">
+        <field name="ts" />
+        <field name="user_id" />
+        <field name="op" />
+        <field name="model_name" />
+        <field name="field_names" optional="show" />
+        <field name="record_count" sum="Total" />
+        <field name="duration_ms" avg="Average" />
+        <field name="status" />
+        <field name="error_code" />
+        <field name="ip" optional="hide" />
+        <field name="domain_text" optional="hide" />
+      </list>
+    </field>
+  </record>
+
+  <record id="view_ai_assistant_audit_search" model="ir.ui.view">
+    <field name="name">ai.assistant.audit.search</field>
+    <field name="model">ai.assistant.audit</field>
+    <field name="arch" type="xml">
+      <search string="AI assistant audit">
+        <field name="user_id" />
+        <field name="model_name" />
+        <field name="op" />
+        <filter name="filter_error" string="Errors" domain="[('status', '=', 'error')]" />
+        <group>
+          <filter name="group_user" string="User" context="{'group_by': 'user_id'}" />
+          <filter name="group_model" string="Model" context="{'group_by': 'model_name'}" />
+          <filter name="group_status" string="Result" context="{'group_by': 'status'}" />
+        </group>
+      </search>
+    </field>
+  </record>
+
+  <record id="action_ai_assistant_audit" model="ir.actions.act_window">
+    <field name="name">AI assistant audit</field>
+    <field name="res_model">ai.assistant.audit</field>
+    <field name="view_mode">list</field>
+    <field name="search_view_id" ref="view_ai_assistant_audit_search" />
+  </record>
+
+  <menuitem
+    id="menu_ai_assistant_audit"
+    name="AI assistant audit"
+    parent="base.menu_administration"
+    action="action_ai_assistant_audit"
+    groups="base.group_system"
+    sequence="90"
+  />
+</odoo>

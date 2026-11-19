@@ -1,0 +1,931 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* ai_assistant_access
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-06 12:06+0000\n"
+"PO-Revision-Date: 2026-09-06 12:06+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: sk_SK\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "1. Download the MCP server"
+msgstr "1. Stiahnite si MCP server"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "2. Set the key"
+msgstr "2. Nastavte kľúč"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "3. Paste this into your client's MCP config"
+msgstr "3. Vložte toto do MCP konfigurácie svojho klienta"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "4. Add the instructions file to your client"
+msgstr "4. Pridajte svojmu klientovi súbor s inštrukciami"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "5. Start a session"
+msgstr "5. Spustite reláciu"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid ""
+"<code>.mcp.json</code>\n"
+"                for Claude Code; the same format works for\n"
+"                                Cursor, Gemini CLI, Copilot CLI, Windsurf, Kiro and Junie; for\n"
+"                other\n"
+"                                clients see"
+msgstr ""
+"<code>.mcp.json</code> pre Claude Code; rovnaký formát funguje pre Cursor, "
+"Gemini CLI, Copilot CLI, Windsurf, Kiro a Junie; pre ostatných klientov "
+"pozrite"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_ai_assistant
+msgid ""
+"<span class=\"text-muted ms-2\">\n"
+"              Every user generates their own access in Preferences; an administrator can see it and\n"
+"              revoke it.\n"
+"            </span>"
+msgstr ""
+"<span class=\"text-muted ms-2\">\n"
+"                            Každý používateľ si vygeneruje vlastný prístup v Predvoľbách; administrátor ho môže vidieť a zrušiť.\n"
+"                        </span>"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_key_show
+msgid ""
+"<strong>Important:</strong>\n"
+"            Store it in the\n"
+"            <code>ODOO_AI_KEY</code>\n"
+"            environment variable on your own machine.\n"
+"                        Never paste it directly into the\n"
+"            <code>.mcp.json</code>\n"
+"            file."
+msgstr ""
+"<strong>Dôležité:</strong>\n"
+"                        Uložte ho do premennej prostredia <code>ODOO_AI_KEY</code> na svojom vlastnom počítači.\n"
+"                        Nikdy ho nevkladajte priamo do súboru <code>.mcp.json</code>."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_ai_assistant
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "AI Assistant"
+msgstr "AI asistent"
+
+#. module: ai_assistant_access
+#: model:ir.model,name:ai_assistant_access.model_ai_assistant_key_show
+msgid "AI Assistant - Key Display"
+msgstr "AI asistent - zobrazenie kľúča"
+
+#. module: ai_assistant_access
+#: model:ir.model,name:ai_assistant_access.model_ai_assistant_audit
+msgid "AI Assistant - Request Audit"
+msgstr "AI asistent - audit požiadaviek"
+
+#. module: ai_assistant_access
+#: model:ir.model,name:ai_assistant_access.model_ai_assistant_access
+msgid "AI Assistant - User Access"
+msgstr "AI asistent - prístup používateľa"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_users__ai_assistant_state
+msgid "AI access status"
+msgstr "Stav AI prístupu"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_users__ai_assistant_access_ids
+msgid "AI assistant accesses"
+msgstr "Prístupy AI asistenta"
+
+#. module: ai_assistant_access
+#: model:ir.actions.act_window,name:ai_assistant_access.action_ai_assistant_audit
+#: model:ir.ui.menu,name:ai_assistant_access.menu_ai_assistant_audit
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_audit_list
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_audit_search
+msgid "AI assistant audit"
+msgstr "Audit AI asistenta"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_config_settings__ai_assistant_enabled
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid "AI assistant enabled"
+msgstr "AI asistent povolený"
+
+#. module: ai_assistant_access
+#. odoo-python
+#: code:addons/ai_assistant_access/models/res_users.py:0
+msgid "AI assistant key"
+msgstr "Kľúč AI asistenta"
+
+#. module: ai_assistant_access
+#: model:ir.actions.server,name:ai_assistant_access.ir_cron_ai_assistant_maintenance_ir_actions_server
+msgid "AI assistant: expire accesses and clean up the audit log"
+msgstr "AI asistent: expirácia prístupov a čistenie auditného záznamu"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__apikey_id
+msgid "API Key"
+msgstr "API kľúč"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields.selection,name:ai_assistant_access.selection__ai_assistant_access__state__active
+#: model:ir.model.fields.selection,name:ai_assistant_access.selection__res_users__ai_assistant_state__active
+msgid "Active"
+msgstr "Aktívny"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_users__ai_assistant_expires_at
+msgid "Active until"
+msgstr "Aktívny do"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_access__expires_at
+msgid ""
+"After this date the endpoint rejects the access even before the cron runs."
+msgstr "Po tomto dátume endpoint odmietne prístup ešte pred spustením cronu."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_config_settings__ai_assistant_allow_http
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid "Allow HTTP"
+msgstr "Povoliť HTTP"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_config_settings__ai_assistant_allowed_models
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid "Allowed models"
+msgstr "Povolené modely"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_audit_list
+msgid "Average"
+msgstr "Priemer"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_res_config_settings__ai_assistant_allowed_models
+msgid ""
+"Comma separated list of models; the hard blacklist in the code cannot be "
+"bypassed."
+msgstr ""
+"Zoznam modelov oddelených čiarkou; pevný zoznam zakázaných modelov v kóde sa"
+" nedá obísť."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid ""
+"Comma separated models. The hard blacklist in the code cannot be bypassed."
+msgstr ""
+"Modely oddelené čiarkou. Pevný zoznam zakázaných modelov v kóde sa nedá "
+"obísť."
+
+#. module: ai_assistant_access
+#: model:ir.model,name:ai_assistant_access.model_res_config_settings
+msgid "Config Settings"
+msgstr "Nastavenia konfigurácie"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "Connect your AI assistant"
+msgstr "Pripojte svojho AI asistenta"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "Copy configuration"
+msgstr "Kopírovať konfiguráciu"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "Copy instructions"
+msgstr "Kopírovať inštrukcie"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__create_uid
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__create_uid
+msgid "Created by"
+msgstr "Vytvoril"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__create_date
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__create_date
+msgid "Created on"
+msgstr "Vytvorené"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__display_name
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__display_name
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_key_show__display_name
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_users__display_name
+msgid "Display Name"
+msgstr "Zobrazovaný názov"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__domain_text
+msgid "Domain"
+msgstr "Doména"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_key_show
+msgid "Done"
+msgstr "Hotovo"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__duration_ms
+msgid "Duration (ms)"
+msgstr "Trvanie (ms)"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields.selection,name:ai_assistant_access.selection__ai_assistant_audit__status__error
+msgid "Error"
+msgstr "Chyba"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__error_code
+msgid "Error code"
+msgstr "Chybový kód"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_audit__error_code
+msgid "Error code returned to the client."
+msgstr "Chybový kód vrátený klientovi."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_audit_search
+msgid "Errors"
+msgstr "Chyby"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields.selection,name:ai_assistant_access.selection__ai_assistant_access__state__expired
+msgid "Expired"
+msgstr "Expirovaný"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_res_users__ai_assistant_expires_at
+msgid "Expiry date of the active access."
+msgstr "Dátum expirácie aktívneho prístupu."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid "Field blacklist"
+msgstr "Zoznam zakázaných polí"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_config_settings__ai_assistant_field_blacklist_regex
+msgid "Field blacklist (regex)"
+msgstr "Zoznam zakázaných polí (regex)"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "Generate access"
+msgstr "Vygenerovať prístup"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_ai_assistant
+msgid "Generated"
+msgstr "Vygenerovaný"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_res_config_settings__ai_assistant_enabled
+msgid ""
+"Global kill switch; once off the endpoint returns 503 and the keys stay in "
+"place."
+msgstr ""
+"Globálny vypínač; keď je vypnutý, endpoint vracia 503 a kľúče zostávajú "
+"zachované."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid "Global switch for the endpoint; the keys stay valid."
+msgstr "Globálny prepínač pre endpoint; kľúče zostávajú platné."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_res_users__ai_assistant_access_ids
+msgid "History of generated accesses; at most one of them can be active."
+msgstr ""
+"História vygenerovaných prístupov; aktívny môže byť najviac jeden z nich."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__id
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__id
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_key_show__id
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_config_settings__id
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_users__id
+msgid "ID"
+msgstr "ID"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__ip
+msgid "IP address"
+msgstr "IP adresa"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields.selection,name:ai_assistant_access.selection__res_users__ai_assistant_state__inactive
+msgid "Invalid"
+msgstr "Neplatný"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_key_show__key
+msgid "Key"
+msgstr "Kľúč"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid "Key validity"
+msgstr "Platnosť kľúča"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_config_settings__ai_assistant_key_days
+msgid "Key validity (days)"
+msgstr "Platnosť kľúča (dni)"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__write_uid
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__write_uid
+msgid "Last Updated by"
+msgstr "Naposledy upravil"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__write_date
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__write_date
+msgid "Last Updated on"
+msgstr "Naposledy upravené"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__last_used_at
+msgid "Last used"
+msgstr "Naposledy použité"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid "Local development only, must stay off in production."
+msgstr "Iba pre lokálny vývoj, v produkcii musí zostať vypnuté."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_res_config_settings__ai_assistant_allow_http
+msgid "Local development only; must stay off in production."
+msgstr "Iba pre lokálny vývoj; v produkcii musí zostať vypnuté."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid "Maximum number of requests per key and minute, 0 disables the limit."
+msgstr "Maximálny počet požiadaviek na kľúč za minútu, 0 limit vypne."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_res_config_settings__ai_assistant_rate_limit_per_min
+msgid "Maximum number of requests per key and minute; 0 disables the limit."
+msgstr "Maximálny počet požiadaviek na kľúč za minútu; 0 limit vypne."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__model_name
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_audit_search
+msgid "Model"
+msgstr "Model"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_audit__op
+msgid "Name of the read-only operation that was called."
+msgstr "Názov zavolanej operácie iba na čítanie."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_access__apikey_id
+msgid ""
+"Native Odoo API key with the ai_assistant_ro scope; only its hash is stored."
+msgstr ""
+"Natívny Odoo API kľúč s rozsahom ai_assistant_ro; ukladá sa iba jeho hash."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields.selection,name:ai_assistant_access.selection__res_users__ai_assistant_state__none
+msgid "Not generated"
+msgstr "Nevygenerovaný"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_res_config_settings__ai_assistant_key_days
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid "Number of days a newly generated key stays valid."
+msgstr "Počet dní, počas ktorých zostáva novo vygenerovaný kľúč platný."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_audit__record_count
+msgid "Number of records returned."
+msgstr "Počet vrátených záznamov."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields.selection,name:ai_assistant_access.selection__ai_assistant_audit__status__ok
+msgid "OK"
+msgstr "OK"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_audit__model_name
+msgid "Odoo model the request was about."
+msgstr "Odoo model, ktorého sa požiadavka týkala."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_access__state
+msgid "Only an active and non-expired access passes through the endpoint."
+msgstr "Cez endpoint prejde iba aktívny a neexpirovaný prístup."
+
+#. module: ai_assistant_access
+#. odoo-python
+#: code:addons/ai_assistant_access/models/res_users.py:0
+msgid "Only an internal user can have AI assistant access."
+msgstr "Prístup AI asistenta môže mať iba interný používateľ."
+
+#. module: ai_assistant_access
+#. odoo-python
+#: code:addons/ai_assistant_access/models/res_users.py:0
+msgid "Only the owner can generate their own AI assistant access."
+msgstr "Vlastný prístup AI asistenta si môže vygenerovať iba jeho vlastník."
+
+#. module: ai_assistant_access
+#. odoo-python
+#: code:addons/ai_assistant_access/models/res_users.py:0
+msgid "Only the owner or an administrator can revoke AI assistant access."
+msgstr ""
+"Prístup AI asistenta môže zrušiť iba jeho vlastník alebo administrátor."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__op
+msgid "Operation"
+msgstr "Operácia"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_access__user_id
+msgid ""
+"Owner of the access; requests run under their identity and access rights."
+msgstr ""
+"Vlastník prístupu; požiadavky bežia pod jeho identitou a prístupovými "
+"právami."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_audit__user_id
+msgid "Owner of the key the request ran under."
+msgstr "Vlastník kľúča, pod ktorým požiadavka bežala."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__record_count
+msgid "Records"
+msgstr "Záznamy"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_res_config_settings__ai_assistant_field_blacklist_regex
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid "Regular expression on field names that are never returned."
+msgstr "Regulárny výraz na názvy polí, ktoré sa nikdy nevrátia."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_audit__domain_text
+msgid "Request domain truncated to 512 characters."
+msgstr "Doména požiadavky skrátená na 512 znakov."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid "Request limit"
+msgstr "Limit požiadaviek"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__request_count
+msgid "Requests"
+msgstr "Požiadavky"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_config_settings__ai_assistant_rate_limit_per_min
+msgid "Requests per minute"
+msgstr "Požiadavky za minútu"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__status
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_audit_search
+msgid "Result"
+msgstr "Výsledok"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_ai_assistant
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "Revoke access"
+msgstr "Zrušiť prístup"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields.selection,name:ai_assistant_access.selection__ai_assistant_access__state__revoked
+msgid "Revoked"
+msgstr "Zrušený"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid ""
+"Save the file on your own machine and install its dependencies with\n"
+"                <code>pip install -r requirements.txt</code>"
+msgstr ""
+"Uložte súbor na svoj vlastný počítač a nainštalujte jeho závislosti príkazom"
+" <code>pip install -r requirements.txt</code>"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid ""
+"Save the text below as\n"
+"                <code>CLAUDE.md</code>\n"
+"                or\n"
+"                <code>AGENTS.md</code>\n"
+"                in your project."
+msgstr ""
+"Uložte text nižšie ako <code>CLAUDE.md</code> alebo <code>AGENTS.md</code> "
+"vo svojom projekte."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid ""
+"Set\n"
+"                <code>ODOO_AI_KEY</code>\n"
+"                as an environment variable on your own\n"
+"                                machine, using the key from the previous dialog."
+msgstr ""
+"Nastavte <code>ODOO_AI_KEY</code> ako premennú prostredia na svojom vlastnom\n"
+"                                počítači, s použitím kľúča z predchádzajúceho dialógu."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_audit__ip
+msgid "Source IP address of the request."
+msgstr "Zdrojová IP adresa požiadavky."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__state
+msgid "Status"
+msgstr "Stav"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_res_users__ai_assistant_state
+msgid "Status of the last access generated for the AI assistant."
+msgstr "Stav posledného vygenerovaného prístupu pre AI asistenta."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "The assistant announces itself in your Odoo inbox."
+msgstr "Asistent sa ohlási vo vašej Odoo schránke."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_key_show__key
+msgid "The key is shown only once; the database stores nothing but its hash."
+msgstr "Kľúč sa zobrazí iba raz; databáza si uchováva len jeho hash."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_key_show
+msgid ""
+"This is the key for your AI assistant. It is shown only once,\n"
+"                        Odoo keeps nothing but its hash."
+msgstr ""
+"Toto je kľúč pre vášho AI asistenta. Zobrazí sa iba raz,\n"
+"                        Odoo si uchováva len jeho hash."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__ts
+msgid "Time"
+msgstr "Čas"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_audit__duration_ms
+msgid "Time spent processing the request."
+msgstr "Čas strávený spracovaním požiadavky."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_audit__ts
+msgid "Time the request reached the endpoint."
+msgstr "Čas, kedy požiadavka dosiahla endpoint."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_audit_list
+msgid "Total"
+msgstr "Spolu"
+
+#. module: ai_assistant_access
+#: model:ir.model,name:ai_assistant_access.model_res_users
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__user_id
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__user_id
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_audit_search
+msgid "User"
+msgstr "Užívateľ"
+
+#. module: ai_assistant_access
+#. odoo-python
+#: code:addons/ai_assistant_access/models/ai_assistant_access.py:0
+msgid "User %s already has an active AI assistant access."
+msgstr "Používateľ %s už má aktívny prístup AI asistenta."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__expires_at
+msgid "Valid until"
+msgstr "Platný do"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_audit__status
+msgid "Whether the request succeeded or failed."
+msgstr "Či bola požiadavka úspešná alebo neúspešná."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_key_show
+msgid "Write down this key"
+msgstr "Zapíšte si tento kľúč"
+
+#. module: ai_assistant_access
+#. odoo-python
+#: code:addons/ai_assistant_access/controllers/ai_assistant_api.py:0
+msgid "Your AI assistant connected"
+msgstr "Váš AI asistent sa pripojil"
+
+#. module: ai_assistant_access
+#. odoo-python
+#: code:addons/ai_assistant_access/controllers/ai_assistant_api.py:0
+msgid ""
+"Your AI assistant just connected to Odoo with %(mode)s access (from IP "
+"%(ip)s). If this was not you, revoke the key in Preferences > AI Assistant."
+msgstr ""
+"Váš AI asistent sa práve pripojil k Odoo s prístupom %(mode)s (z IP %(ip)s). "
+"Ak ste to neboli vy, zrušte kľúč v Predvoľbách > AI asistent."
+
+#. module: ai_assistant_access
+#. odoo-python
+#: code:addons/ai_assistant_access/controllers/ai_assistant_api.py:0
+msgid "read-only"
+msgstr "iba na čítanie"
+
+#. module: ai_assistant_access
+#. odoo-python
+#: code:addons/ai_assistant_access/controllers/ai_assistant_api.py:0
+msgid "read and edit"
+msgstr "na čítanie a úpravy"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "docs/clients.md"
+msgstr "docs/clients.md"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "1. Copy the prompt"
+msgstr "1. Skopírujte prompt"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "2. Paste it into Claude Code"
+msgstr "2. Vložte ho do Claude Code"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "3. Restart Claude Code"
+msgstr "3. Reštartujte Claude Code"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_pairing
+msgid ""
+"<strong>Code expires in 10 minutes</strong>\n"
+"            and works only once. Your previous AI assistant access has been revoked."
+msgstr ""
+"<strong>Kód vyprší o 10 minút</strong>\n"
+"            a funguje iba raz. Váš predošlý prístup AI asistenta bol zrušený."
+
+#. module: ai_assistant_access
+#: model:ir.model,name:ai_assistant_access.model_ai_assistant_pairing
+msgid "AI Assistant - Pairing Prompt"
+msgstr "AI asistent - párovací prompt"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_users__ai_assistant_edit_allowed
+msgid "AI editing allowed"
+msgstr "Úpravy cez AI povolené"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_access__pairing_expires_at
+msgid ""
+"After this moment the pairing code can no longer be exchanged for a key."
+msgstr "Po tomto okamihu už párovací kód nemožno vymeniť za kľúč."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_config_settings__ai_assistant_allow_edit
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid "Allow editing"
+msgstr "Povoliť úpravy"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid ""
+"Click one of the buttons above, confirm your password and copy the prompt."
+msgstr ""
+"Kliknite na jedno z tlačidiel vyššie, potvrďte heslo a skopírujte prompt."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_res_config_settings__ai_assistant_writable_models
+msgid ""
+"Comma separated models the assistant may create and edit; they must also be "
+"allowed models and deleting is never possible."
+msgstr ""
+"Čiarkou oddelené modely, v ktorých môže asistent vytvárať a upravovať "
+"záznamy; musia byť aj medzi povolenými modelmi a mazanie nie je nikdy možné."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid ""
+"Comma separated models the assistant may create and edit; they must also be "
+"allowed models."
+msgstr ""
+"Čiarkou oddelené modely, v ktorých môže asistent vytvárať a upravovať "
+"záznamy; musia byť aj medzi povolenými modelmi."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_pairing
+msgid "Copy prompt"
+msgstr "Kopírovať prompt"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_pairing
+msgid ""
+"Copy the prompt and paste it into Claude Code. The assistant downloads the MCP server,\n"
+"            pairs it with Odoo and stores the key on your machine; the key never appears in the\n"
+"            chat."
+msgstr ""
+"Skopírujte prompt a vložte ho do Claude Code. Asistent stiahne MCP server,\n"
+"            spáruje ho s Odoo a uloží kľúč na váš počítač; kľúč sa nikdy neobjaví v\n"
+"            chate."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_config_settings__ai_assistant_writable_models
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid "Editable models"
+msgstr "Upraviteľné modely"
+
+#. module: ai_assistant_access
+#. odoo-python
+#: code:addons/ai_assistant_access/models/res_users.py:0
+msgid "Editing through the AI assistant is disabled by the administrator."
+msgstr "Úpravy cez AI asistenta administrátor vypol."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__field_names
+msgid "Fields"
+msgstr "Polia"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "Generate read access"
+msgstr "Vygenerovať prístup na čítanie"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "Generate read and edit access"
+msgstr "Vygenerovať prístup na čítanie a úpravy"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_res_config_settings__ai_assistant_allow_edit
+msgid ""
+"Lets users generate a read and edit access; once off, existing read and edit"
+" keys fall back to read only."
+msgstr ""
+"Umožní používateľom vygenerovať prístup na čítanie a úpravy; po vypnutí "
+"existujúce kľúče na čítanie a úpravy prejdú iba na čítanie."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__access_mode
+msgid "Mode"
+msgstr "Režim"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_audit__field_names
+msgid ""
+"Names of the fields a create or write request changed, without their values."
+msgstr ""
+"Názvy polí, ktoré požiadavka create alebo write zmenila, bez ich hodnôt."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_access__apikey_id
+msgid ""
+"Native Odoo API key with the ai_assistant_ro or ai_assistant_rw scope; only "
+"its hash is stored."
+msgstr ""
+"Natívny Odoo API kľúč so scope ai_assistant_ro alebo ai_assistant_rw; ukladá"
+" sa iba jeho hash."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__pairing_code_hash
+msgid "Pairing code hash"
+msgstr "Hash párovacieho kódu"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__pairing_expires_at
+msgid "Pairing code valid until"
+msgstr "Párovací kód platí do"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_pairing
+msgid "Paste this prompt into your AI assistant"
+msgstr "Vložte tento prompt do svojho AI asistenta"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_pairing__prompt
+msgid "Prompt"
+msgstr "Prompt"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_pairing__prompt
+msgid ""
+"Prompt for your AI assistant with a one-time pairing code; it never contains"
+" the key."
+msgstr ""
+"Prompt pre vášho AI asistenta s jednorazovým párovacím kódom; nikdy "
+"neobsahuje kľúč."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields.selection,name:ai_assistant_access.selection__ai_assistant_access__access_mode__read_write
+msgid "Read and edit"
+msgstr "Čítanie a úpravy"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_access__access_mode
+msgid ""
+"Read and edit works only while the administrator allows editing; otherwise "
+"the access falls back to read only."
+msgstr ""
+"Čítanie a úpravy fungujú iba kým administrátor povoľuje úpravy; inak prístup"
+" prejde iba na čítanie."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields.selection,name:ai_assistant_access.selection__ai_assistant_access__access_mode__read
+msgid "Read only"
+msgstr "Iba čítanie"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_access__pairing_code_hash
+msgid ""
+"SHA-256 of the one-time pairing code; cleared once the code is used or "
+"expires."
+msgstr ""
+"SHA-256 jednorazového párovacieho kódu; vymaže sa po použití alebo expirácii"
+" kódu."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_res_users__ai_assistant_edit_allowed
+msgid "The administrator allows read and edit access for AI assistants."
+msgstr "Administrátor povoľuje AI asistentom prístup na čítanie a úpravy."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid ""
+"The assistant announces itself in your Odoo inbox. Other clients are "
+"described in"
+msgstr ""
+"Asistent sa ohlási vo vašej Odoo schránke. Ostatní klienti sú popísaní v"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid ""
+"The assistant downloads the MCP server, pairs it with Odoo using a one-time code\n"
+"                and stores the key on your machine. The key never appears in the chat."
+msgstr ""
+"Asistent stiahne MCP server, spáruje ho s Odoo pomocou jednorazového kódu\n"
+"                a uloží kľúč na váš počítač. Kľúč sa nikdy neobjaví v chate."
+
+#. module: ai_assistant_access
+#. odoo-python
+#: code:addons/ai_assistant_access/models/res_users.py:0
+msgid "Unknown AI assistant access mode."
+msgstr "Neznámy režim prístupu AI asistenta."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid ""
+"Users may generate a read and edit access. Deleting is never possible; once "
+"off, read and edit keys fall back to read only."
+msgstr ""
+"Používatelia môžu vygenerovať prístup na čítanie a úpravy. Mazanie nie je "
+"nikdy možné; po vypnutí kľúče na čítanie a úpravy prejdú iba na čítanie."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields.selection,name:ai_assistant_access.selection__ai_assistant_access__state__pending
+msgid "Waiting for pairing"
+msgstr "Čaká na párovanie"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields.selection,name:ai_assistant_access.selection__res_users__ai_assistant_state__pending
+msgid "Waiting for your assistant"
+msgstr "Čaká sa na vášho asistenta"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid ""
+"Waiting for your assistant: paste the prompt into Claude Code within 10 minutes. If the\n"
+"            code expired, generate a new prompt."
+msgstr ""
+"Čaká sa na vášho asistenta: vložte prompt do Claude Code do 10 minút. Ak\n"
+"            kód vypršal, vygenerujte nový prompt."

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="res_config_settings_view_form" model="ir.ui.view">
+    <field name="name">res.config.settings.view.form.inherit.ai.assistant.access</field>
+    <field name="model">res.config.settings</field>
+    <field name="inherit_id" ref="base_setup.res_config_settings_view_form" />
+    <field name="arch" type="xml">
+      <xpath expr="//app[@name='general_settings']" position="inside">
+        <block title="AI Assistant" name="ai_assistant_setting_container">
+          <setting
+            id="ai_assistant_enabled_setting"
+            string="AI assistant enabled"
+            help="Global switch for the endpoint; the keys stay valid.">
+            <field name="ai_assistant_enabled" />
+          </setting>
+          <setting
+            id="ai_assistant_models_setting"
+            string="Allowed models"
+            help="Comma separated models. The hard blacklist in the code cannot be bypassed.">
+            <field name="ai_assistant_allowed_models" />
+          </setting>
+          <setting
+            id="ai_assistant_allow_edit_setting"
+            string="Allow editing"
+            help="Users may generate a read and edit access. Deleting is never possible; once off, read and edit keys fall back to read only.">
+            <field name="ai_assistant_allow_edit" />
+          </setting>
+          <setting
+            id="ai_assistant_writable_models_setting"
+            string="Editable models"
+            help="Comma separated models the assistant may create and edit; they must also be allowed models.">
+            <field name="ai_assistant_writable_models" />
+          </setting>
+          <setting
+            id="ai_assistant_key_days_setting"
+            string="Key validity"
+            help="Number of days a newly generated key stays valid.">
+            <field name="ai_assistant_key_days" />
+          </setting>
+          <setting
+            id="ai_assistant_rate_limit_setting"
+            string="Request limit"
+            help="Maximum number of requests per key and minute, 0 disables the limit.">
+            <field name="ai_assistant_rate_limit_per_min" />
+          </setting>
+          <setting
+            id="ai_assistant_field_regex_setting"
+            string="Field blacklist"
+            help="Regular expression on field names that are never returned.">
+            <field name="ai_assistant_field_blacklist_regex" />
+          </setting>
+          <setting
+            id="ai_assistant_allow_http_setting"
+            string="Allow HTTP"
+            help="Local development only, must stay off in production.">
+            <field name="ai_assistant_allow_http" />
+          </setting>
+        </block>
+      </xpath>
+    </field>
+  </record>
+</odoo>

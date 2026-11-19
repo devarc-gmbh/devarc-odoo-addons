@@ -1,0 +1,954 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* ai_assistant_access
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-06 12:06+0000\n"
+"PO-Revision-Date: 2026-09-06 12:06+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de_CH\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "1. Download the MCP server"
+msgstr "1. Laden Sie den MCP-Server herunter"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "2. Set the key"
+msgstr "2. Setzen Sie den Schlüssel"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "3. Paste this into your client's MCP config"
+msgstr "3. Fügen Sie dies in die MCP-Konfiguration Ihres Clients ein"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "4. Add the instructions file to your client"
+msgstr "4. Fügen Sie Ihrem Client die Anweisungsdatei hinzu"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "5. Start a session"
+msgstr "5. Starten Sie eine Sitzung"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid ""
+"<code>.mcp.json</code>\n"
+"                for Claude Code; the same format works for\n"
+"                                Cursor, Gemini CLI, Copilot CLI, Windsurf, Kiro and Junie; for\n"
+"                other\n"
+"                                clients see"
+msgstr ""
+"<code>.mcp.json</code> für Claude Code; dasselbe Format funktioniert für "
+"Cursor, Gemini CLI, Copilot CLI, Windsurf, Kiro und Junie; für andere "
+"Clients siehe"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_ai_assistant
+msgid ""
+"<span class=\"text-muted ms-2\">\n"
+"              Every user generates their own access in Preferences; an administrator can see it and\n"
+"              revoke it.\n"
+"            </span>"
+msgstr ""
+"<span class=\"text-muted ms-2\">\n"
+"                            Jeder Benutzer generiert seinen eigenen Zugriff in den Einstellungen; ein Administrator kann ihn sehen und widerrufen.\n"
+"                        </span>"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_key_show
+msgid ""
+"<strong>Important:</strong>\n"
+"            Store it in the\n"
+"            <code>ODOO_AI_KEY</code>\n"
+"            environment variable on your own machine.\n"
+"                        Never paste it directly into the\n"
+"            <code>.mcp.json</code>\n"
+"            file."
+msgstr ""
+"<strong>Wichtig:</strong>\n"
+"                        Speichern Sie ihn in der Umgebungsvariable <code>ODOO_AI_KEY</code> auf Ihrem eigenen Rechner.\n"
+"                        Fügen Sie ihn niemals direkt in die Datei <code>.mcp.json</code> ein."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_ai_assistant
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "AI Assistant"
+msgstr "KI-Assistent"
+
+#. module: ai_assistant_access
+#: model:ir.model,name:ai_assistant_access.model_ai_assistant_key_show
+msgid "AI Assistant - Key Display"
+msgstr "KI-Assistent - Schlüsselanzeige"
+
+#. module: ai_assistant_access
+#: model:ir.model,name:ai_assistant_access.model_ai_assistant_audit
+msgid "AI Assistant - Request Audit"
+msgstr "KI-Assistent - Audit der Anfragen"
+
+#. module: ai_assistant_access
+#: model:ir.model,name:ai_assistant_access.model_ai_assistant_access
+msgid "AI Assistant - User Access"
+msgstr "KI-Assistent - Benutzerzugriff"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_users__ai_assistant_state
+msgid "AI access status"
+msgstr "Status des KI-Zugriffs"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_users__ai_assistant_access_ids
+msgid "AI assistant accesses"
+msgstr "KI-Assistenten-Zugriffe"
+
+#. module: ai_assistant_access
+#: model:ir.actions.act_window,name:ai_assistant_access.action_ai_assistant_audit
+#: model:ir.ui.menu,name:ai_assistant_access.menu_ai_assistant_audit
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_audit_list
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_audit_search
+msgid "AI assistant audit"
+msgstr "Audit des KI-Assistenten"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_config_settings__ai_assistant_enabled
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid "AI assistant enabled"
+msgstr "KI-Assistent aktiviert"
+
+#. module: ai_assistant_access
+#. odoo-python
+#: code:addons/ai_assistant_access/models/res_users.py:0
+msgid "AI assistant key"
+msgstr "Schlüssel des KI-Assistenten"
+
+#. module: ai_assistant_access
+#: model:ir.actions.server,name:ai_assistant_access.ir_cron_ai_assistant_maintenance_ir_actions_server
+msgid "AI assistant: expire accesses and clean up the audit log"
+msgstr "KI-Assistent: Zugriffe ablaufen lassen und Audit-Protokoll bereinigen"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__apikey_id
+msgid "API Key"
+msgstr "API-Schlüssel"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields.selection,name:ai_assistant_access.selection__ai_assistant_access__state__active
+#: model:ir.model.fields.selection,name:ai_assistant_access.selection__res_users__ai_assistant_state__active
+msgid "Active"
+msgstr "Aktiv"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_users__ai_assistant_expires_at
+msgid "Active until"
+msgstr "Aktiv bis"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_access__expires_at
+msgid ""
+"After this date the endpoint rejects the access even before the cron runs."
+msgstr ""
+"Nach diesem Datum lehnt der Endpoint den Zugriff ab, noch bevor der Cron "
+"läuft."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_config_settings__ai_assistant_allow_http
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid "Allow HTTP"
+msgstr "HTTP zulassen"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_config_settings__ai_assistant_allowed_models
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid "Allowed models"
+msgstr "Erlaubte Modelle"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_audit_list
+msgid "Average"
+msgstr "Durchschnitt"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_res_config_settings__ai_assistant_allowed_models
+msgid ""
+"Comma separated list of models; the hard blacklist in the code cannot be "
+"bypassed."
+msgstr ""
+"Durch Kommas getrennte Liste von Modellen; die fest im Code hinterlegte "
+"Sperrliste kann nicht umgangen werden."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid ""
+"Comma separated models. The hard blacklist in the code cannot be bypassed."
+msgstr ""
+"Durch Kommas getrennte Modelle. Die fest im Code hinterlegte Sperrliste kann"
+" nicht umgangen werden."
+
+#. module: ai_assistant_access
+#: model:ir.model,name:ai_assistant_access.model_res_config_settings
+msgid "Config Settings"
+msgstr "Konfigurationseinstellungen"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "Connect your AI assistant"
+msgstr "Verbinden Sie Ihren KI-Assistenten"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "Copy configuration"
+msgstr "Konfiguration kopieren"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "Copy instructions"
+msgstr "Anweisungen kopieren"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__create_uid
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__create_uid
+msgid "Created by"
+msgstr "Erstellt von"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__create_date
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__create_date
+msgid "Created on"
+msgstr "Erstellt am"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__display_name
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__display_name
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_key_show__display_name
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_users__display_name
+msgid "Display Name"
+msgstr "Anzeigename"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__domain_text
+msgid "Domain"
+msgstr "Domäne"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_key_show
+msgid "Done"
+msgstr "Fertig"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__duration_ms
+msgid "Duration (ms)"
+msgstr "Dauer (ms)"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields.selection,name:ai_assistant_access.selection__ai_assistant_audit__status__error
+msgid "Error"
+msgstr "Fehler"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__error_code
+msgid "Error code"
+msgstr "Fehlercode"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_audit__error_code
+msgid "Error code returned to the client."
+msgstr "An den Client zurückgegebener Fehlercode."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_audit_search
+msgid "Errors"
+msgstr "Fehler"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields.selection,name:ai_assistant_access.selection__ai_assistant_access__state__expired
+msgid "Expired"
+msgstr "Abgelaufen"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_res_users__ai_assistant_expires_at
+msgid "Expiry date of the active access."
+msgstr "Ablaufdatum des aktiven Zugriffs."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid "Field blacklist"
+msgstr "Feld-Sperrliste"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_config_settings__ai_assistant_field_blacklist_regex
+msgid "Field blacklist (regex)"
+msgstr "Feld-Sperrliste (Regex)"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "Generate access"
+msgstr "Zugriff generieren"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_ai_assistant
+msgid "Generated"
+msgstr "Generiert"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_res_config_settings__ai_assistant_enabled
+msgid ""
+"Global kill switch; once off the endpoint returns 503 and the keys stay in "
+"place."
+msgstr ""
+"Globaler Notausschalter; sobald deaktiviert, gibt der Endpoint 503 zurück "
+"und die Schlüssel bleiben erhalten."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid "Global switch for the endpoint; the keys stay valid."
+msgstr "Globaler Schalter für den Endpoint; die Schlüssel bleiben gültig."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_res_users__ai_assistant_access_ids
+msgid "History of generated accesses; at most one of them can be active."
+msgstr ""
+"Verlauf der generierten Zugriffe; höchstens einer davon kann aktiv sein."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__id
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__id
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_key_show__id
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_config_settings__id
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_users__id
+msgid "ID"
+msgstr "ID"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__ip
+msgid "IP address"
+msgstr "IP-Adresse"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields.selection,name:ai_assistant_access.selection__res_users__ai_assistant_state__inactive
+msgid "Invalid"
+msgstr "Ungültig"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_key_show__key
+msgid "Key"
+msgstr "Schlüssel"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid "Key validity"
+msgstr "Gültigkeit des Schlüssels"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_config_settings__ai_assistant_key_days
+msgid "Key validity (days)"
+msgstr "Gültigkeit des Schlüssels (Tage)"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__write_uid
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__write_uid
+msgid "Last Updated by"
+msgstr "Zuletzt aktualisiert von"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__write_date
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__write_date
+msgid "Last Updated on"
+msgstr "Zuletzt aktualisiert am"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__last_used_at
+msgid "Last used"
+msgstr "Zuletzt verwendet"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid "Local development only, must stay off in production."
+msgstr ""
+"Nur für die lokale Entwicklung, muss in der Produktion deaktiviert bleiben."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_res_config_settings__ai_assistant_allow_http
+msgid "Local development only; must stay off in production."
+msgstr ""
+"Nur für die lokale Entwicklung; muss in der Produktion deaktiviert bleiben."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid "Maximum number of requests per key and minute, 0 disables the limit."
+msgstr ""
+"Maximale Anzahl von Anfragen pro Schlüssel und Minute, 0 deaktiviert das "
+"Limit."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_res_config_settings__ai_assistant_rate_limit_per_min
+msgid "Maximum number of requests per key and minute; 0 disables the limit."
+msgstr ""
+"Maximale Anzahl von Anfragen pro Schlüssel und Minute; 0 deaktiviert das "
+"Limit."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__model_name
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_audit_search
+msgid "Model"
+msgstr "Modell"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_audit__op
+msgid "Name of the read-only operation that was called."
+msgstr "Name der aufgerufenen schreibgeschützten Operation."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_access__apikey_id
+msgid ""
+"Native Odoo API key with the ai_assistant_ro scope; only its hash is stored."
+msgstr ""
+"Nativer Odoo-API-Schlüssel mit dem Scope ai_assistant_ro; es wird nur dessen"
+" Hash gespeichert."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields.selection,name:ai_assistant_access.selection__res_users__ai_assistant_state__none
+msgid "Not generated"
+msgstr "Nicht generiert"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_res_config_settings__ai_assistant_key_days
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid "Number of days a newly generated key stays valid."
+msgstr "Anzahl der Tage, die ein neu generierter Schlüssel gültig bleibt."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_audit__record_count
+msgid "Number of records returned."
+msgstr "Anzahl der zurückgegebenen Datensätze."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields.selection,name:ai_assistant_access.selection__ai_assistant_audit__status__ok
+msgid "OK"
+msgstr "OK"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_audit__model_name
+msgid "Odoo model the request was about."
+msgstr "Odoo-Modell, auf das sich die Anfrage bezog."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_access__state
+msgid "Only an active and non-expired access passes through the endpoint."
+msgstr ""
+"Nur ein aktiver und nicht abgelaufener Zugriff wird vom Endpoint "
+"durchgelassen."
+
+#. module: ai_assistant_access
+#. odoo-python
+#: code:addons/ai_assistant_access/models/res_users.py:0
+msgid "Only an internal user can have AI assistant access."
+msgstr "Nur ein interner Benutzer kann einen KI-Assistenten-Zugriff haben."
+
+#. module: ai_assistant_access
+#. odoo-python
+#: code:addons/ai_assistant_access/models/res_users.py:0
+msgid "Only the owner can generate their own AI assistant access."
+msgstr ""
+"Nur der Eigentümer kann seinen eigenen KI-Assistenten-Zugriff generieren."
+
+#. module: ai_assistant_access
+#. odoo-python
+#: code:addons/ai_assistant_access/models/res_users.py:0
+msgid "Only the owner or an administrator can revoke AI assistant access."
+msgstr ""
+"Nur der Eigentümer oder ein Administrator kann den KI-Assistenten-Zugriff "
+"widerrufen."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__op
+msgid "Operation"
+msgstr "Operation"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_access__user_id
+msgid ""
+"Owner of the access; requests run under their identity and access rights."
+msgstr ""
+"Eigentümer des Zugriffs; Anfragen laufen unter seiner Identität und seinen "
+"Zugriffsrechten."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_audit__user_id
+msgid "Owner of the key the request ran under."
+msgstr "Eigentümer des Schlüssels, unter dem die Anfrage lief."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__record_count
+msgid "Records"
+msgstr "Datensätze"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_res_config_settings__ai_assistant_field_blacklist_regex
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid "Regular expression on field names that are never returned."
+msgstr "Regulärer Ausdruck für Feldnamen, die nie zurückgegeben werden."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_audit__domain_text
+msgid "Request domain truncated to 512 characters."
+msgstr "Anfragedomäne, gekürzt auf 512 Zeichen."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid "Request limit"
+msgstr "Anfragelimit"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__request_count
+msgid "Requests"
+msgstr "Anfragen"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_config_settings__ai_assistant_rate_limit_per_min
+msgid "Requests per minute"
+msgstr "Anfragen pro Minute"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__status
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_audit_search
+msgid "Result"
+msgstr "Ergebnis"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_ai_assistant
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "Revoke access"
+msgstr "Zugriff widerrufen"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields.selection,name:ai_assistant_access.selection__ai_assistant_access__state__revoked
+msgid "Revoked"
+msgstr "Widerrufen"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid ""
+"Save the file on your own machine and install its dependencies with\n"
+"                <code>pip install -r requirements.txt</code>"
+msgstr ""
+"Speichern Sie die Datei auf Ihrem eigenen Rechner und installieren Sie ihre "
+"Abhängigkeiten mit <code>pip install -r requirements.txt</code>"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid ""
+"Save the text below as\n"
+"                <code>CLAUDE.md</code>\n"
+"                or\n"
+"                <code>AGENTS.md</code>\n"
+"                in your project."
+msgstr ""
+"Speichern Sie den folgenden Text als <code>CLAUDE.md</code> oder "
+"<code>AGENTS.md</code> in Ihrem Projekt."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid ""
+"Set\n"
+"                <code>ODOO_AI_KEY</code>\n"
+"                as an environment variable on your own\n"
+"                                machine, using the key from the previous dialog."
+msgstr ""
+"Setzen Sie <code>ODOO_AI_KEY</code> als Umgebungsvariable auf Ihrem eigenen\n"
+"                                Rechner, mit dem Schlüssel aus dem vorherigen Dialog."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_audit__ip
+msgid "Source IP address of the request."
+msgstr "Quell-IP-Adresse der Anfrage."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__state
+msgid "Status"
+msgstr "Status"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_res_users__ai_assistant_state
+msgid "Status of the last access generated for the AI assistant."
+msgstr "Status des zuletzt generierten KI-Assistenten-Zugriffs."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "The assistant announces itself in your Odoo inbox."
+msgstr "Der Assistent meldet sich in Ihrem Odoo-Posteingang."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_key_show__key
+msgid "The key is shown only once; the database stores nothing but its hash."
+msgstr ""
+"Der Schlüssel wird nur einmal angezeigt; die Datenbank speichert nur seinen "
+"Hash."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_key_show
+msgid ""
+"This is the key for your AI assistant. It is shown only once,\n"
+"                        Odoo keeps nothing but its hash."
+msgstr ""
+"Dies ist der Schlüssel für Ihren KI-Assistenten. Er wird nur einmal angezeigt,\n"
+"                        Odoo speichert nur seinen Hash."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__ts
+msgid "Time"
+msgstr "Zeit"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_audit__duration_ms
+msgid "Time spent processing the request."
+msgstr "Für die Verarbeitung der Anfrage aufgewendete Zeit."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_audit__ts
+msgid "Time the request reached the endpoint."
+msgstr "Zeitpunkt, zu dem die Anfrage den Endpoint erreichte."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_audit_list
+msgid "Total"
+msgstr "Gesamt"
+
+#. module: ai_assistant_access
+#: model:ir.model,name:ai_assistant_access.model_res_users
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__user_id
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__user_id
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_audit_search
+msgid "User"
+msgstr "Benutzer"
+
+#. module: ai_assistant_access
+#. odoo-python
+#: code:addons/ai_assistant_access/models/ai_assistant_access.py:0
+msgid "User %s already has an active AI assistant access."
+msgstr "Benutzer %s hat bereits einen aktiven KI-Assistenten-Zugriff."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__expires_at
+msgid "Valid until"
+msgstr "Gültig bis"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_audit__status
+msgid "Whether the request succeeded or failed."
+msgstr "Ob die Anfrage erfolgreich war oder fehlgeschlagen ist."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_key_show
+msgid "Write down this key"
+msgstr "Notieren Sie sich diesen Schlüssel"
+
+#. module: ai_assistant_access
+#. odoo-python
+#: code:addons/ai_assistant_access/controllers/ai_assistant_api.py:0
+msgid "Your AI assistant connected"
+msgstr "Ihr KI-Assistent hat sich verbunden"
+
+#. module: ai_assistant_access
+#. odoo-python
+#: code:addons/ai_assistant_access/controllers/ai_assistant_api.py:0
+msgid ""
+"Your AI assistant just connected to Odoo with %(mode)s access (from IP "
+"%(ip)s). If this was not you, revoke the key in Preferences > AI Assistant."
+msgstr ""
+"Ihr KI-Assistent hat sich gerade mit %(mode)s bei Odoo verbunden (von IP "
+"%(ip)s). Falls das nicht Sie waren, widerrufen Sie den Schlüssel unter "
+"Einstellungen > KI-Assistent."
+
+#. module: ai_assistant_access
+#. odoo-python
+#: code:addons/ai_assistant_access/controllers/ai_assistant_api.py:0
+msgid "read-only"
+msgstr "schreibgeschütztem Zugriff"
+
+#. module: ai_assistant_access
+#. odoo-python
+#: code:addons/ai_assistant_access/controllers/ai_assistant_api.py:0
+msgid "read and edit"
+msgstr "Lese- und Bearbeitungszugriff"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "docs/clients.md"
+msgstr "docs/clients.md"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "1. Copy the prompt"
+msgstr "1. Prompt kopieren"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "2. Paste it into Claude Code"
+msgstr "2. In Claude Code einfügen"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "3. Restart Claude Code"
+msgstr "3. Claude Code neu starten"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_pairing
+msgid ""
+"<strong>Code expires in 10 minutes</strong>\n"
+"            and works only once. Your previous AI assistant access has been revoked."
+msgstr ""
+"<strong>Der Code läuft in 10 Minuten ab</strong>\n"
+"            und funktioniert nur einmal. Ihr bisheriger KI-Assistenten-Zugang wurde widerrufen."
+
+#. module: ai_assistant_access
+#: model:ir.model,name:ai_assistant_access.model_ai_assistant_pairing
+msgid "AI Assistant - Pairing Prompt"
+msgstr "KI-Assistent - Kopplungs-Prompt"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_users__ai_assistant_edit_allowed
+msgid "AI editing allowed"
+msgstr "Bearbeiten durch KI erlaubt"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_access__pairing_expires_at
+msgid ""
+"After this moment the pairing code can no longer be exchanged for a key."
+msgstr ""
+"Nach diesem Zeitpunkt kann der Kopplungscode nicht mehr gegen einen "
+"Schlüssel getauscht werden."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_config_settings__ai_assistant_allow_edit
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid "Allow editing"
+msgstr "Bearbeiten erlauben"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid ""
+"Click one of the buttons above, confirm your password and copy the prompt."
+msgstr ""
+"Klicken Sie auf eine der Schaltflächen oben, bestätigen Sie Ihr Passwort und"
+" kopieren Sie den Prompt."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_res_config_settings__ai_assistant_writable_models
+msgid ""
+"Comma separated models the assistant may create and edit; they must also be "
+"allowed models and deleting is never possible."
+msgstr ""
+"Kommagetrennte Modelle, in denen der Assistent anlegen und bearbeiten darf; "
+"sie müssen auch erlaubte Modelle sein, Löschen ist nie möglich."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid ""
+"Comma separated models the assistant may create and edit; they must also be "
+"allowed models."
+msgstr ""
+"Kommagetrennte Modelle, in denen der Assistent anlegen und bearbeiten darf; "
+"sie müssen auch erlaubte Modelle sein."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_pairing
+msgid "Copy prompt"
+msgstr "Prompt kopieren"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_pairing
+msgid ""
+"Copy the prompt and paste it into Claude Code. The assistant downloads the MCP server,\n"
+"            pairs it with Odoo and stores the key on your machine; the key never appears in the\n"
+"            chat."
+msgstr ""
+"Kopieren Sie den Prompt und fügen Sie ihn in Claude Code ein. Der Assistent lädt den MCP-Server herunter,\n"
+"            koppelt ihn mit Odoo und speichert den Schlüssel auf Ihrem Rechner; der Schlüssel erscheint nie im\n"
+"            Chat."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_res_config_settings__ai_assistant_writable_models
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid "Editable models"
+msgstr "Bearbeitbare Modelle"
+
+#. module: ai_assistant_access
+#. odoo-python
+#: code:addons/ai_assistant_access/models/res_users.py:0
+msgid "Editing through the AI assistant is disabled by the administrator."
+msgstr ""
+"Das Bearbeiten durch den KI-Assistenten wurde vom Administrator deaktiviert."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_audit__field_names
+msgid "Fields"
+msgstr "Felder"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "Generate read access"
+msgstr "Lesezugriff erzeugen"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid "Generate read and edit access"
+msgstr "Lese- und Bearbeitungszugriff erzeugen"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_res_config_settings__ai_assistant_allow_edit
+msgid ""
+"Lets users generate a read and edit access; once off, existing read and edit"
+" keys fall back to read only."
+msgstr ""
+"Erlaubt Benutzern, Lese- und Bearbeitungszugriff zu erzeugen; ausgeschaltet "
+"fallen bestehende Schlüssel auf reinen Lesezugriff zurück."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__access_mode
+msgid "Mode"
+msgstr "Modus"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_audit__field_names
+msgid ""
+"Names of the fields a create or write request changed, without their values."
+msgstr ""
+"Namen der Felder, die eine create- oder write-Anfrage geändert hat, ohne "
+"ihre Werte."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_access__apikey_id
+msgid ""
+"Native Odoo API key with the ai_assistant_ro or ai_assistant_rw scope; only "
+"its hash is stored."
+msgstr ""
+"Nativer Odoo-API-Schlüssel mit dem Scope ai_assistant_ro oder "
+"ai_assistant_rw; gespeichert wird nur sein Hash."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__pairing_code_hash
+msgid "Pairing code hash"
+msgstr "Hash des Kopplungscodes"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_access__pairing_expires_at
+msgid "Pairing code valid until"
+msgstr "Kopplungscode gültig bis"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_ai_assistant_pairing
+msgid "Paste this prompt into your AI assistant"
+msgstr "Fügen Sie diesen Prompt in Ihren KI-Assistenten ein"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,field_description:ai_assistant_access.field_ai_assistant_pairing__prompt
+msgid "Prompt"
+msgstr "Prompt"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_pairing__prompt
+msgid ""
+"Prompt for your AI assistant with a one-time pairing code; it never contains"
+" the key."
+msgstr ""
+"Prompt für Ihren KI-Assistenten mit einem einmaligen Kopplungscode; er "
+"enthält nie den Schlüssel."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields.selection,name:ai_assistant_access.selection__ai_assistant_access__access_mode__read_write
+msgid "Read and edit"
+msgstr "Lesen und Bearbeiten"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_access__access_mode
+msgid ""
+"Read and edit works only while the administrator allows editing; otherwise "
+"the access falls back to read only."
+msgstr ""
+"Lesen und Bearbeiten funktioniert nur, solange der Administrator das "
+"Bearbeiten erlaubt; sonst fällt der Zugriff auf reinen Lesezugriff zurück."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields.selection,name:ai_assistant_access.selection__ai_assistant_access__access_mode__read
+msgid "Read only"
+msgstr "Nur lesen"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_ai_assistant_access__pairing_code_hash
+msgid ""
+"SHA-256 of the one-time pairing code; cleared once the code is used or "
+"expires."
+msgstr ""
+"SHA-256 des einmaligen Kopplungscodes; wird gelöscht, sobald der Code "
+"verwendet wurde oder abläuft."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields,help:ai_assistant_access.field_res_users__ai_assistant_edit_allowed
+msgid "The administrator allows read and edit access for AI assistants."
+msgstr ""
+"Der Administrator erlaubt KI-Assistenten Lese- und Bearbeitungszugriff."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid ""
+"The assistant announces itself in your Odoo inbox. Other clients are "
+"described in"
+msgstr ""
+"Der Assistent meldet sich in Ihrem Odoo-Posteingang. Andere Clients sind "
+"beschrieben in"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid ""
+"The assistant downloads the MCP server, pairs it with Odoo using a one-time code\n"
+"                and stores the key on your machine. The key never appears in the chat."
+msgstr ""
+"Der Assistent lädt den MCP-Server herunter, koppelt ihn mit einem einmaligen Code mit Odoo\n"
+"                und speichert den Schlüssel auf Ihrem Rechner. Der Schlüssel erscheint nie im Chat."
+
+#. module: ai_assistant_access
+#. odoo-python
+#: code:addons/ai_assistant_access/models/res_users.py:0
+msgid "Unknown AI assistant access mode."
+msgstr "Unbekannter Zugriffsmodus des KI-Assistenten."
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.res_config_settings_view_form
+msgid ""
+"Users may generate a read and edit access. Deleting is never possible; once "
+"off, read and edit keys fall back to read only."
+msgstr ""
+"Benutzer dürfen Lese- und Bearbeitungszugriff erzeugen. Löschen ist nie "
+"möglich; ausgeschaltet fallen diese Schlüssel auf reinen Lesezugriff zurück."
+
+#. module: ai_assistant_access
+#: model:ir.model.fields.selection,name:ai_assistant_access.selection__ai_assistant_access__state__pending
+msgid "Waiting for pairing"
+msgstr "Wartet auf Kopplung"
+
+#. module: ai_assistant_access
+#: model:ir.model.fields.selection,name:ai_assistant_access.selection__res_users__ai_assistant_state__pending
+msgid "Waiting for your assistant"
+msgstr "Warten auf Ihren Assistenten"
+
+#. module: ai_assistant_access
+#: model_terms:ir.ui.view,arch_db:ai_assistant_access.view_users_form_simple_modif_ai_assistant
+msgid ""
+"Waiting for your assistant: paste the prompt into Claude Code within 10 minutes. If the\n"
+"            code expired, generate a new prompt."
+msgstr ""
+"Warten auf Ihren Assistenten: Fügen Sie den Prompt innerhalb von 10 Minuten in Claude Code ein. Ist der\n"
+"            Code abgelaufen, erzeugen Sie einen neuen Prompt."
