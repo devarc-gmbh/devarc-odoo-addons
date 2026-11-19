@@ -12,13 +12,13 @@ Odoo asks you to re-enter your password (same protection as generating a native 
 your administrator turned on **Allow editing**, a second button **"Generate read and edit access"**
 is shown.
 
-![Preferences before generating access](../ai_assistant_access/static/description/images/01-preferences-generate.png)
+![Preferences before generating access](../static/description/images/01-preferences-generate.png)
 
 A dialog shows a prompt with a one-time pairing code. Click **"Copy prompt"**. The code has 12
 characters, works once and expires in 10 minutes. Generating a prompt revokes your previous AI
 assistant access.
 
-![Pairing prompt](../ai_assistant_access/static/description/images/02-pairing-prompt.png)
+![Pairing prompt](../static/description/images/02-pairing-prompt.png)
 
 ### 2. Paste the prompt into Claude Code
 
@@ -42,7 +42,7 @@ new prompt.
 After the restart the assistant calls `odoo_hello`; you get one notification in your Odoo inbox
 and the tab shows **Active** with the expiry date.
 
-![Preferences after pairing](../ai_assistant_access/static/description/images/03-preferences-connected.png)
+![Preferences after pairing](../static/description/images/03-preferences-connected.png)
 
 Other clients than Claude Code: see [docs/clients.md](clients.md) for the equivalent config file.
 

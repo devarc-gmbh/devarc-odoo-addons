@@ -14,7 +14,7 @@
 | Allow HTTP | `ai_assistant.allow_http` | `False` | Local development only - must stay off in production. HTTPS is otherwise required, `403 https_required` on plain HTTP. |
 | Field blacklist | `ai_assistant.field_blacklist_regex` | `password\|passwd\|secret\|token\|api_key\|apikey\|private_key\|totp\|oauth\|signature` | Field names matching this pattern are never returned, in any operation, including inside `domain`/`groupby`/aggregates. A custom value extends the default pattern, it never replaces it. |
 
-![AI Assistant block in General Settings](../ai_assistant_access/static/description/images/05-settings.png)
+![AI Assistant block in General Settings](../static/description/images/05-settings.png)
 
 There is no in-app IP allowlist setting - see "Restrict source IPs" below for why, and what to use
 instead.
