@@ -80,7 +80,7 @@ useless and you can delete it (`odoo_status` shows its path).
 
 Without a credentials file set all three of `ODOO_URL`, `ODOO_DB` and `ODOO_AI_KEY`, and keep
 `"ODOO_AI_KEY": "${ODOO_AI_KEY}"` in `.mcp.json` so the real key never lands in the file. If your
-client isn't Claude Code, check [docs/clients.md](../../../docs/clients.md) at the repo root for
+client isn't Claude Code, check [docs/clients.md](../../docs/clients.md) at the repo root for
 the equivalent config file and whether `${VAR}` expansion works for it at all.
 
 ## Tools

@@ -1,6 +1,6 @@
 # DevArc QR Invoice
 
-Swiss QR-bill (SIX Swiss Payment Standards) tools for Odoo 19 Community on top of the standard `l10n_ch`
+Swiss QR-bill (SIX Swiss Payment Standards) tools for Odoo 20 Community on top of the standard `l10n_ch`
 localization. The main feature is the import of vendor QR-bills from the text of a QR code scanner,
 a PDF or a photo. On top of that, it adds checks and a clearer message to the QR-bill that `l10n_ch`
 prints on customer invoices.
@@ -28,7 +28,7 @@ prints on customer invoices.
     When the bill already has lines, they are kept and no line is added.
   - The uploaded document is attached to the bill.
   - The bill stays in draft.
-- Duplicate warning: Odoo 19 already shows its own duplicate banner on the bill. In addition, when
+- Duplicate warning: Odoo already shows its own duplicate banner on the bill. In addition, when
   another non-cancelled vendor bill of the same vendor and company has the same payment reference and
   the same total in the same currency, or the same invoice number reference, the import shows a
   warning with links to those bills. Some vendors reuse one QR reference on every invoice, so the
