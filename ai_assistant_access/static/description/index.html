@@ -3,7 +3,7 @@
   <div class="row" style="margin-bottom: 24px;">
     <div class="col-12 text-center">
       <h1 style="font-weight: 700; margin-bottom: 8px;">AI Assistant Access</h1>
-      <p style="font-size: 18px; color: #666666;">Give every user a personal, read-only AI access, paired with a one-time code, so their own AI assistant can look at their own Odoo data - nothing more. Editing is opt-in and works only while the administrator keeps Allow editing on.</p>
+      <p style="font-size: 18px; color: #666666;">Give every user a personal AI access, paired with a one-time code, so their own AI agent can look at their own Odoo data - nothing more. Access is read-only by default. Editing is opt-in and works only while the administrator keeps Allow editing on.</p>
     </div>
   </div>
 
@@ -15,12 +15,12 @@
 
   <div class="row" style="margin-bottom: 32px;">
     <div class="col-md-4" style="padding: 12px;">
-      <h4 style="font-weight: 600;">Your own assistant</h4>
-      <p style="color: #555555;">Each user generates their own key and connects their own AI client (Claude Code, Cursor, Gemini CLI, and more) under their own subscription.</p>
+      <h4 style="font-weight: 600;">Your own agent</h4>
+      <p style="color: #555555;">Each user generates their own key and connects their own MCP capable AI agent (Claude Code, OpenAI Codex, GitHub Copilot, Gemini CLI, Cursor, and more) under their own subscription.</p>
     </div>
     <div class="col-md-4" style="padding: 12px;">
-      <h4 style="font-weight: 600;">Physically read-only</h4>
-      <p style="color: #555555;">Every request runs on a fresh PostgreSQL transaction with <code>SET TRANSACTION READ ONLY</code> as the first statement. A write attempt fails at the database level.</p>
+      <h4 style="font-weight: 600;">Read-only by default</h4>
+      <p style="color: #555555;">Read requests run on a fresh PostgreSQL transaction with <code>SET TRANSACTION READ ONLY</code> as the first statement, so a write attempt fails at the database level. Writing exists only for read and edit access, with Allow editing on, and never deletes.</p>
     </div>
     <div class="col-md-4" style="padding: 12px;">
       <h4 style="font-weight: 600;">No AI credentials in Odoo</h4>
@@ -32,10 +32,10 @@
     <div class="col-12">
       <h2 style="font-weight: 700; border-bottom: 2px solid #eeeeee; padding-bottom: 8px;">How it works</h2>
       <ol style="color: #444444; font-size: 15px; line-height: 1.7;">
-        <li>The user generates a personal access key in Preferences &gt; AI Assistant (re-entering their password).</li>
-        <li>A small MCP server (<code>odoo_ai_mcp.py</code>) runs on the user's own machine, under their own AI client session.</li>
+        <li>The user generates a personal access key in Preferences &gt; AI Assistant (re-entering their password), as read-only or, when the administrator allowed it, as read and edit access.</li>
+        <li>A small MCP server (<code>odoo_ai_mcp.py</code>) runs on the user's own machine, under their own AI agent session.</li>
         <li>Every call goes to <code>POST /ai_assistant/v1/&lt;op&gt;</code>, authenticated with the personal key, and runs under the key owner's own identity - same access rights, same record rules as the Odoo UI.</li>
-        <li>Only 7 read operations are reachable: list models, list fields, search, read, count, name search, group/aggregate. No business method is dispatchable.</li>
+        <li>Read access reaches 7 read operations: list models, list fields, search, read, count, name search, group/aggregate. Read and edit access adds <code>create</code> and <code>write</code> on top. No business method is dispatchable.</li>
         <li>The assistant can return a working link back to a record in Odoo, and can group/aggregate data (e.g. sum of revenue by stage).</li>
       </ol>
     </div>
@@ -43,8 +43,21 @@
 
   <div class="row" style="margin-bottom: 32px;">
     <div class="col-12">
-      <h2 style="font-weight: 700; border-bottom: 2px solid #eeeeee; padding-bottom: 8px;">The only data write on the assistant's behalf: hello</h2>
-      <p style="color: #444444;">With read access the only write the assistant can trigger in your data is <code>hello</code>; create and update exist only for read and edit access while Allow editing is on. When the assistant connects, it sends a single Odoo inbox notification to its owner: "Your AI assistant just connected to Odoo with read-only access (from IP &lt;ip&gt;). If this was not you, revoke the key in Preferences &gt; AI Assistant." The request body is ignored entirely, so this cannot be used to inject arbitrary text. Because the message includes the connecting IP address, it doubles as a connection alert if a key is ever stolen. The request audit log and the key metadata are internal records of the module and cannot be reached through the API.</p>
+      <h2 style="font-weight: 700; border-bottom: 2px solid #eeeeee; padding-bottom: 8px;">Optional editing (off by default)</h2>
+      <ul style="color: #444444; font-size: 15px; line-height: 1.7;">
+        <li>Works only while the administrator keeps <strong>Allow editing</strong> on. Turning it off takes effect on the next request: keys keep reading, every write is refused, no key is revoked.</li>
+        <li><code>create</code> (1 record) and <code>write</code> (up to 50 records) only in the administrator's <strong>Editable models</strong> (default: CRM leads, project tasks, activities, contacts) that are also readable and not blacklisted.</li>
+        <li>Writes run as the key owner with their access rights and record rules, never with sudo.</li>
+        <li>There is no delete. Archiving, restoring, changing the company, binary and x2many values and secret-like fields are rejected.</li>
+        <li>The audit log stores the names of the written fields, never their values.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom: 32px;">
+    <div class="col-12">
+      <h2 style="font-weight: 700; border-bottom: 2px solid #eeeeee; padding-bottom: 8px;">Connection alert: hello</h2>
+      <p style="color: #444444;">When the assistant connects, it calls <code>hello</code>, which sends a single Odoo inbox notification to its owner: "Your AI assistant just connected to Odoo with read-only (or read and edit) access (from IP &lt;ip&gt;). If this was not you, revoke the key in Preferences &gt; AI Assistant." The request body is ignored entirely, so this cannot be used to inject arbitrary text. Because the message includes the connecting IP address, it doubles as a connection alert if a key is ever stolen. The request audit log and the key metadata are internal records of the module and cannot be reached through the API.</p>
     </div>
   </div>
 
@@ -52,8 +65,8 @@
     <div class="col-12">
       <h2 style="font-weight: 700; border-bottom: 2px solid #eeeeee; padding-bottom: 8px;">Security</h2>
       <ul style="color: #444444; font-size: 15px; line-height: 1.7;">
-        <li>PostgreSQL <code>READ ONLY</code> transaction on every request (database-level, not just application code).</li>
-        <li>Whitelist of 7 read operations at the endpoint.</li>
+        <li>Read requests run in a PostgreSQL <code>READ ONLY</code> transaction (database-level, not just application code). Write requests are possible only for read and edit keys while Allow editing is on.</li>
+        <li>Whitelist of operations at the endpoint: 7 read operations, plus <code>create</code> and <code>write</code> for read and edit access only. No <code>unlink</code>.</li>
         <li>Identity of the request is always the key's own owner - their access rights, their record rules, nothing cloned.</li>
         <li>Admin-configurable model whitelist, plus a hard-coded blacklist (e.g. users, API keys, mail servers, payment providers, access rules) that cannot be re-enabled through Settings.</li>
         <li>Field filter: binary fields are never returned; a regex blacklist covers password/token/secret-like field names, including inside filters and aggregates.</li>

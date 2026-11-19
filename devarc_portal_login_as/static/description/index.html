@@ -1,0 +1,87 @@
+<section style="max-width: 900px; margin: 0 auto; font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; color: #333333;">
+
+  <div class="row" style="margin-bottom: 24px;">
+    <div class="col-12 text-center">
+      <h1 style="font-weight: 700; margin-bottom: 8px;">Portal Login As</h1>
+      <p style="font-size: 18px; color: #666666;">Let authorised staff see the customer portal exactly as a portal user sees it. A reason, the staff member's own password, a 30 minute limit, a full audit log and a notification to the customer.</p>
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom: 32px;">
+    <div class="col-12 text-center">
+      <img src="banner.png" alt="Portal Login As" class="img-fluid" style="max-width: 100%; border: 1px solid #dddddd; border-radius: 4px;"/>
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom: 32px;">
+    <div class="col-md-4" style="padding: 12px;">
+      <h4 style="font-weight: 600;">See what the customer sees</h4>
+      <p style="color: #555555;">A customer says an invoice or document is missing in the portal? Press <em>View as customer</em>, see the portal with the customer's own access rights, find the cause and press <em>Return</em>.</p>
+    </div>
+    <div class="col-md-4" style="padding: 12px;">
+      <h4 style="font-weight: 600;">Controlled and logged</h4>
+      <p style="color: #555555;">A mandatory reason, the password asked again before every switch, and an audit log with who, whom, why, start, expiry, end reason, IP address and browser.</p>
+    </div>
+    <div class="col-md-4" style="padding: 12px;">
+      <h4 style="font-weight: 600;">Transparent to the customer</h4>
+      <p style="color: #555555;">The portal user gets a notification when the session starts. A yellow banner on every portal page shows the customer's name, the end time and a <em>Return</em> button.</p>
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom: 32px;">
+    <div class="col-12">
+      <h2 style="font-weight: 700; border-bottom: 2px solid #eeeeee; padding-bottom: 8px;">How it works</h2>
+      <ol style="color: #444444; font-size: 15px; line-height: 1.7;">
+        <li>Open a contact or a portal user and press <em>View as customer</em>. The button is shown only to users who may use it.</li>
+        <li>Enter the reason, press <em>Start</em> and confirm your own password.</li>
+        <li>The browser session switches to the portal user with a new session id. The original session id stops working.</li>
+        <li>Check the portal. Press <em>Return</em> in the banner: the session switches back to you, again with a new session id, and the audit log record opens.</li>
+        <li>The session ends automatically after 30 minutes.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom: 32px;">
+    <div class="col-12">
+      <h2 style="font-weight: 700; border-bottom: 2px solid #eeeeee; padding-bottom: 8px;">Access groups</h2>
+      <ul style="color: #444444; font-size: 15px; line-height: 1.7;">
+        <li><strong>Login As: my customers</strong> - the user may view the portal of portal users whose company has them as Salesperson, and sees the log entries of their own sessions.</li>
+        <li><strong>Login As: all portal users</strong> - the user may view every active portal user of the companies they have access to and sees all log entries. Meant for support.</li>
+      </ul>
+      <p style="color: #444444;">Only internal users in one of these groups can use the feature.</p>
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom: 32px;">
+    <div class="col-12">
+      <h2 style="font-weight: 700; border-bottom: 2px solid #eeeeee; padding-bottom: 8px;">Security</h2>
+      <ul style="color: #444444; font-size: 15px; line-height: 1.7;">
+        <li>Only active portal users can be viewed. Internal users, inactive users and users of a company the staff member has no access to are refused.</li>
+        <li>The staff member's password is checked before every switch.</li>
+        <li>During a session the portal user's security settings cannot be changed.</li>
+        <li><em>Return</em> is a POST request with a CSRF token. If the staff member's password changed or the user was archived meanwhile, the session is logged out instead.</li>
+        <li>Logout, expiry, <em>Stop</em> by an administrator and a refused <em>Return</em> end the log entry with the matching end reason. Administrators can stop any active session.</li>
+        <li>Log entries cannot be created, edited or deleted from the user interface.</li>
+      </ul>
+      <p style="color: #444444;">Known limitation: <em>my customers</em> trusts the Salesperson field, so restrict who may edit it. Details in the README.</p>
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom: 32px;">
+    <div class="col-12">
+      <h2 style="font-weight: 700; border-bottom: 2px solid #eeeeee; padding-bottom: 8px;">Learn more</h2>
+      <ul style="color: #444444; font-size: 15px; line-height: 1.7;">
+        <li><a href="https://youtu.be/wp7Nc-AZdSg">Video demo</a></li>
+        <li><a href="https://devarc.ch/blog/knowledge-3/customer-portal-login-as-odoo-13">Blog post</a></li>
+        <li><a href="https://github.com/devarc-gmbh/devarc-odoo-addons">Source code and README</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 text-center" style="color: #999999; font-size: 13px; padding-top: 16px; border-top: 1px solid #eeeeee;">
+      <p>Support: <a href="mailto:info@devarc.ch">info@devarc.ch</a> &middot; <a href="https://github.com/devarc-gmbh/devarc-odoo-addons">Source &amp; docs</a> &middot; License: LGPL-3</p>
+    </div>
+  </div>
+
+</section>
