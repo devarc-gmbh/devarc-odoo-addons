@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="view_users_form_ai_assistant" model="ir.ui.view">
+    <field name="name">res.users.form.ai.assistant</field>
+    <field name="model">res.users</field>
+    <field name="inherit_id" ref="base.view_users_form" />
+    <field name="arch" type="xml">
+      <xpath expr="//page[@name='page_security']" position="after">
+        <page string="AI Assistant" name="page_ai_assistant">
+          <group>
+            <group>
+              <field name="ai_assistant_state" />
+              <field name="ai_assistant_expires_at" invisible="ai_assistant_state != 'active'" />
+            </group>
+          </group>
+          <div class="mt-2" name="ai_assistant_buttons">
+            <button
+              name="action_ai_assistant_revoke"
+              type="object"
+              class="btn btn-secondary"
+              string="Revoke access"
+              invisible="ai_assistant_state not in ('active', 'pending')"
+            />
+            <span class="text-muted ms-2">
+              Every user generates their own access in Preferences; an administrator can see it and
+              revoke it.
+            </span>
+          </div>
+          <field name="ai_assistant_access_ids" readonly="1" class="mt-4">
+            <list>
+              <field name="create_date" string="Generated" />
+              <field name="expires_at" />
+              <field name="last_used_at" />
+              <field name="request_count" />
+              <field name="access_mode" />
+              <field name="state" />
+            </list>
+          </field>
+        </page>
+      </xpath>
+    </field>
+  </record>
+
+  <record id="view_users_form_simple_modif_ai_assistant" model="ir.ui.view">
+    <field name="name">res.users.preferences.form.ai.assistant</field>
+    <field name="model">res.users</field>
+    <field name="inherit_id" ref="base.view_users_form_simple_modif" />
+    <field name="arch" type="xml">
+      <xpath expr="//page[@name='page_security']" position="after">
+        <page string="AI Assistant" name="page_ai_assistant">
+          <group>
+            <group>
+              <field name="ai_assistant_state" />
+              <field name="ai_assistant_expires_at" invisible="ai_assistant_state != 'active'" />
+            </group>
+          </group>
+          <field name="ai_assistant_edit_allowed" invisible="1" />
+          <div class="mt-2" name="ai_assistant_buttons">
+            <button
+              name="action_ai_assistant_pair_read"
+              type="object"
+              class="btn btn-primary"
+              string="Generate read access"
+            />
+            <button
+              name="action_ai_assistant_pair_edit"
+              type="object"
+              class="btn btn-primary ms-2"
+              string="Generate read and edit access"
+              invisible="not ai_assistant_edit_allowed"
+            />
+            <button
+              name="action_ai_assistant_revoke"
+              type="object"
+              class="btn btn-secondary ms-2"
+              string="Revoke access"
+              invisible="ai_assistant_state not in ('active', 'pending')"
+            />
+          </div>
+          <div
+            class="alert alert-info mt-3 text-wrap"
+            role="status"
+            name="ai_assistant_pending"
+            invisible="ai_assistant_state != 'pending'">
+            Waiting for your assistant: paste the prompt into Claude Code within 10 minutes. If the
+            code expired, generate a new prompt.
+          </div>
+          <div class="mt-4 text-wrap" name="ai_assistant_setup">
+            <h4 class="mb-3">Connect your AI assistant</h4>
+            <div class="mb-3" name="step_copy">
+              <h6 class="mb-1">1. Copy the prompt</h6>
+              <div class="text-muted">
+                Click one of the buttons above, confirm your password and copy the prompt.
+              </div>
+            </div>
+            <div class="mb-3" name="step_paste">
+              <h6 class="mb-1">2. Paste it into Claude Code</h6>
+              <div class="text-muted">
+                The assistant downloads the MCP server, pairs it with Odoo using a one-time code
+                and stores the key on your machine. The key never appears in the chat.
+              </div>
+            </div>
+            <div name="step_restart">
+              <h6 class="mb-1">3. Restart Claude Code</h6>
+              <div class="text-muted">
+                The assistant announces itself in your Odoo inbox. Other clients are described in
+                <a
+                  href="https://github.com/devarc-gmbh/devarc-odoo-addons/blob/19.0/ai_assistant_access/docs/clients.md"
+                  target="_blank">
+                  docs/clients.md
+                </a>
+              </div>
+            </div>
+          </div>
+        </page>
+      </xpath>
+    </field>
+  </record>
+</odoo>
