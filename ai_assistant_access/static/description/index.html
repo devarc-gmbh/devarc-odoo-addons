@@ -1,0 +1,91 @@
+<section style="max-width: 900px; margin: 0 auto; font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; color: #333333;">
+
+  <div class="row" style="margin-bottom: 24px;">
+    <div class="col-12 text-center">
+      <h1 style="font-weight: 700; margin-bottom: 8px;">AI Assistant Access</h1>
+      <p style="font-size: 18px; color: #666666;">Give every user a personal, read-only AI access, paired with a one-time code, so their own AI assistant can look at their own Odoo data - nothing more. Editing is opt-in and works only while the administrator keeps Allow editing on.</p>
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom: 32px;">
+    <div class="col-12 text-center">
+      <img src="images/main_screenshot.png" alt="Connect your AI assistant" class="img-fluid" style="max-width: 100%; border: 1px solid #dddddd; border-radius: 4px;"/>
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom: 32px;">
+    <div class="col-md-4" style="padding: 12px;">
+      <h4 style="font-weight: 600;">Your own assistant</h4>
+      <p style="color: #555555;">Each user generates their own key and connects their own AI client (Claude Code, Cursor, Gemini CLI, and more) under their own subscription.</p>
+    </div>
+    <div class="col-md-4" style="padding: 12px;">
+      <h4 style="font-weight: 600;">Physically read-only</h4>
+      <p style="color: #555555;">Every request runs on a fresh PostgreSQL transaction with <code>SET TRANSACTION READ ONLY</code> as the first statement. A write attempt fails at the database level.</p>
+    </div>
+    <div class="col-md-4" style="padding: 12px;">
+      <h4 style="font-weight: 600;">No AI credentials in Odoo</h4>
+      <p style="color: #555555;">The module never holds or calls any AI provider credential. There is no field for one, no import of an AI SDK, no outbound call to any AI provider.</p>
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom: 32px;">
+    <div class="col-12">
+      <h2 style="font-weight: 700; border-bottom: 2px solid #eeeeee; padding-bottom: 8px;">How it works</h2>
+      <ol style="color: #444444; font-size: 15px; line-height: 1.7;">
+        <li>The user generates a personal access key in Preferences &gt; AI Assistant (re-entering their password).</li>
+        <li>A small MCP server (<code>odoo_ai_mcp.py</code>) runs on the user's own machine, under their own AI client session.</li>
+        <li>Every call goes to <code>POST /ai_assistant/v1/&lt;op&gt;</code>, authenticated with the personal key, and runs under the key owner's own identity - same access rights, same record rules as the Odoo UI.</li>
+        <li>Only 7 read operations are reachable: list models, list fields, search, read, count, name search, group/aggregate. No business method is dispatchable.</li>
+        <li>The assistant can return a working link back to a record in Odoo, and can group/aggregate data (e.g. sum of revenue by stage).</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom: 32px;">
+    <div class="col-12">
+      <h2 style="font-weight: 700; border-bottom: 2px solid #eeeeee; padding-bottom: 8px;">The only data write on the assistant's behalf: hello</h2>
+      <p style="color: #444444;">With read access the only write the assistant can trigger in your data is <code>hello</code>; create and update exist only for read and edit access while Allow editing is on. When the assistant connects, it sends a single Odoo inbox notification to its owner: "Your AI assistant just connected to Odoo with read-only access (from IP &lt;ip&gt;). If this was not you, revoke the key in Preferences &gt; AI Assistant." The request body is ignored entirely, so this cannot be used to inject arbitrary text. Because the message includes the connecting IP address, it doubles as a connection alert if a key is ever stolen. The request audit log and the key metadata are internal records of the module and cannot be reached through the API.</p>
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom: 32px;">
+    <div class="col-12">
+      <h2 style="font-weight: 700; border-bottom: 2px solid #eeeeee; padding-bottom: 8px;">Security</h2>
+      <ul style="color: #444444; font-size: 15px; line-height: 1.7;">
+        <li>PostgreSQL <code>READ ONLY</code> transaction on every request (database-level, not just application code).</li>
+        <li>Whitelist of 7 read operations at the endpoint.</li>
+        <li>Identity of the request is always the key's own owner - their access rights, their record rules, nothing cloned.</li>
+        <li>Admin-configurable model whitelist, plus a hard-coded blacklist (e.g. users, API keys, mail servers, payment providers, access rules) that cannot be re-enabled through Settings.</li>
+        <li>Field filter: binary fields are never returned; a regex blacklist covers password/token/secret-like field names, including inside filters and aggregates.</li>
+        <li>The access key is scoped, hashed in the database, shown to its owner exactly once, expires by default, and is rate-limited.</li>
+        <li><strong>Audit log</strong>: every authenticated request - successful or not - is recorded (who, when, IP, operation, model, record count); prompt content and returned data are never stored, only request metadata.</li>
+        <li>A global kill-switch and per-user revocation are both available to administrators at any time.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom: 32px;">
+    <div class="col-12 text-center">
+      <img src="images/06-audit.png" alt="Audit log" class="img-fluid" style="max-width: 100%; border: 1px solid #dddddd; border-radius: 4px;"/>
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom: 32px;">
+    <div class="col-12">
+      <h2 style="font-weight: 700; border-bottom: 2px solid #eeeeee; padding-bottom: 8px;">Requirements</h2>
+      <p style="color: #444444;">The Odoo module itself has no external Python dependency beyond Odoo's own <code>psycopg2</code>. The companion MCP server, which runs outside Odoo on the user's own machine, requires:</p>
+      <ul style="color: #444444;">
+        <li>Python 3.10 or newer</li>
+        <li><code>mcp</code>, version <code>&gt;=1.2,&lt;2</code></li>
+        <li><code>httpx</code></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 text-center" style="color: #999999; font-size: 13px; padding-top: 16px; border-top: 1px solid #eeeeee;">
+      <p>Support: <a href="mailto:info@devarc.ch">info@devarc.ch</a> &middot; <a href="https://github.com/devarc-gmbh/devarc-odoo-addons">Source &amp; docs</a> &middot; License: LGPL-3</p>
+    </div>
+  </div>
+
+</section>

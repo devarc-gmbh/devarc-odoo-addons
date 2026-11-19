@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+  <record id="param_ai_assistant_enabled" model="ir.config_parameter">
+    <field name="key">ai_assistant.enabled</field>
+    <field name="value">True</field>
+  </record>
+
+  <record id="param_ai_assistant_allow_http" model="ir.config_parameter">
+    <field name="key">ai_assistant.allow_http</field>
+    <field name="value">False</field>
+  </record>
+
+  <record id="param_ai_assistant_allow_edit" model="ir.config_parameter">
+    <field name="key">ai_assistant.allow_edit</field>
+    <field name="value">False</field>
+  </record>
+
+  <record id="param_ai_assistant_writable_models" model="ir.config_parameter">
+    <field name="key">ai_assistant.writable_models</field>
+    <field name="value">crm.lead,project.task,mail.activity,res.partner</field>
+  </record>
+
+  <record id="param_ai_assistant_key_days" model="ir.config_parameter">
+    <field name="key">ai_assistant.key_days</field>
+    <field name="value">90</field>
+  </record>
+
+  <record id="param_ai_assistant_rate_limit" model="ir.config_parameter">
+    <field name="key">ai_assistant.rate_limit_per_min</field>
+    <field name="value">60</field>
+  </record>
+
+  <record id="param_ai_assistant_field_blacklist" model="ir.config_parameter">
+    <field name="key">ai_assistant.field_blacklist_regex</field>
+    <field name="value">password|passwd|secret|token|api_key|apikey|private_key|totp|oauth|signature</field>
+  </record>
+
+  <record id="param_ai_assistant_allowed_models" model="ir.config_parameter">
+    <field name="key">ai_assistant.allowed_models</field>
+    <field name="value">
+      res.partner,res.company,crm.lead,crm.stage,crm.team,sale.order,sale.order.line,product.template,product.product,product.category,project.project,project.task,project.task.type,account.move,account.move.line,mail.activity,mail.message
+    </field>
+  </record>
+</odoo>

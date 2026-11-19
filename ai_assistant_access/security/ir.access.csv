@@ -1,0 +1,5 @@
+id,name,model_id,group_id/id,operation,domain
+access_ai_assistant_access_user,ai.assistant.access user: own access,ai.assistant.access,base.group_user,r,"[('user_id', '=', user.id)]"
+access_ai_assistant_access_system,ai.assistant.access system,ai.assistant.access,base.group_system,crud,
+access_ai_assistant_audit_system,ai.assistant.audit system,ai.assistant.audit,base.group_system,r,
+access_ai_assistant_pairing_user,ai.assistant.pairing user,ai.assistant.pairing,base.group_user,cru,

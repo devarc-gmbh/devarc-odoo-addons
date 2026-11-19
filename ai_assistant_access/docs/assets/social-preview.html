@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AI Assistant Access - social preview</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 1280px;
+    height: 640px;
+    background: linear-gradient(135deg, #2C2C54 0%, #1B1B3A 100%);
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: #F2F2F2;
+  }
+  .wrap {
+    width: 1280px;
+    height: 640px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  .icon {
+    width: 96px;
+    height: 96px;
+    margin-bottom: 24px;
+  }
+  h1 {
+    font-size: 56px;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.5px;
+  }
+  p.tagline {
+    font-size: 26px;
+    margin: 0 0 32px 0;
+    color: #C9C9E8;
+  }
+  .badges {
+    display: flex;
+    gap: 20px;
+  }
+  .badge {
+    font-size: 18px;
+    padding: 8px 18px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .badge.accent {
+    background: #7C5CFF;
+    border-color: #7C5CFF;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <svg class="icon" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="64" cy="64" r="60" fill="none" stroke="#F2F2F2" stroke-width="4"/>
+      <circle cx="46" cy="52" r="18" fill="none" stroke="#F2F2F2" stroke-width="6"/>
+      <rect x="58" y="52" width="34" height="7" rx="3.5" fill="#F2F2F2"/>
+      <rect x="78" y="59" width="7" height="12" rx="3.5" fill="#F2F2F2"/>
+      <rect x="88" y="59" width="7" height="16" rx="3.5" fill="#F2F2F2"/>
+      <path d="M96 30 L100 40 L110 44 L100 48 L96 58 L92 48 L82 44 L92 40 Z" fill="#7C5CFF"/>
+    </svg>
+    <h1>AI Assistant Access</h1>
+    <p class="tagline">Your own AI assistant. Your own Odoo data. Read-only.</p>
+    <div class="badges">
+      <span class="badge">Odoo 19.0</span>
+      <span class="badge">LGPL-3</span>
+      <span class="badge accent">MCP</span>
+    </div>
+  </div>
+</body>
+</html>

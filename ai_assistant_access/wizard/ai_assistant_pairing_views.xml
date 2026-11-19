@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="view_ai_assistant_pairing" model="ir.ui.view">
+    <field name="name">ai.assistant.pairing.form</field>
+    <field name="model">ai.assistant.pairing</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <h3 class="fw-bold">Paste this prompt into your AI assistant</h3>
+          <p>
+            Copy the prompt and paste it into Claude Code. The assistant downloads the MCP server,
+            pairs it with Odoo and stores the key on your machine; the key never appears in the
+            chat.
+          </p>
+          <div name="pairing_prompt" class="text-wrap">
+            <field
+              name="prompt"
+              readonly="1"
+              nolabel="1"
+              class="d-block w-100 font-monospace small bg-100 border rounded p-2 text-break"
+              style="white-space: pre-wrap"
+            />
+            <field
+              name="prompt"
+              widget="CopyClipboardButton"
+              nolabel="1"
+              string="Copy prompt"
+              class="d-inline-block mt-1"
+              options="{'btn_class': 'primary'}"
+            />
+          </div>
+          <p class="alert alert-warning mt-3" role="alert">
+            <strong>Code expires in 10 minutes</strong>
+            and works only once. Your previous AI assistant access has been revoked.
+          </p>
+          <footer>
+            <button special="cancel" data-hotkey="x" string="Done" />
+          </footer>
+        </sheet>
+      </form>
+    </field>
+  </record>
+</odoo>
