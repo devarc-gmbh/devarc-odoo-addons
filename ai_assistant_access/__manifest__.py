@@ -19,7 +19,7 @@
         "views/res_config_settings_views.xml",
         "views/res_users_views.xml",
     ],
-    "images": ["static/description/images/main_screenshot.png"],
+    "images": ["static/description/banner.png", "static/description/images/main_screenshot.png"],
     "installable": True,
     "application": False,
 }
