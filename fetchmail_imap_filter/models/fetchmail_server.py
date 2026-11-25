@@ -36,7 +36,8 @@ class FetchmailServer(models.Model):
     @api.constrains("imap_search_criteria")
     def _check_imap_search_criteria(self):
         for server in self:
-            if not UNSEEN_PREFIX.match(server.imap_search_criteria or ""):
+            criteria = server.imap_search_criteria or ""
+            if not UNSEEN_PREFIX.match(criteria):
                 raise ValidationError(
                     self.env._(
                         "IMAP search criteria must start with UNSEEN, so that every search "
@@ -45,11 +46,18 @@ class FetchmailServer(models.Model):
                         "every run."
                     )
                 )
-            if not (server.imap_search_criteria or "").isascii():
+            if not criteria.isascii():
                 raise ValidationError(
                     self.env._(
                         "The IMAP Search Criteria field must contain ASCII characters only, "
                         "the IMAP connection cannot send other characters in a search."
+                    )
+                )
+            if IMAP_LITERAL.search(criteria):
+                raise ValidationError(
+                    self.env._(
+                        "IMAP search criteria must not end with an IMAP literal such as {5}, "
+                        "the IMAP server would wait for data that is never sent."
                     )
                 )
 
@@ -62,13 +70,6 @@ class FetchmailServer(models.Model):
                     self.env._(
                         "IMAP folder and search criteria must not contain line breaks, the "
                         "IMAP server would read the rest of the line as a separate command."
-                    )
-                )
-            if IMAP_LITERAL.search(server.imap_search_criteria or ""):
-                raise ValidationError(
-                    self.env._(
-                        "IMAP search criteria must not end with an IMAP literal such as {5}, "
-                        "the IMAP server would wait for data that is never sent."
                     )
                 )
 
