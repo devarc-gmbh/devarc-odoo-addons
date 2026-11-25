@@ -1,6 +1,7 @@
 from contextlib import contextmanager
 from email.message import EmailMessage
 from email.utils import formatdate
+from imaplib import IMAP4
 from unittest.mock import patch
 
 from odoo.addons.mail.models.fetchmail import OdooIMAP4
@@ -51,6 +52,15 @@ class FakeIMAP4(OdooIMAP4):
     def logout(self):
         self.logged_out = True
         return ("BYE", [b"LOGOUT completed"])
+
+
+class RefusingSelectIMAP4(FakeIMAP4):
+    def select(self, mailbox="INBOX", readonly=False):
+        self.selected_folders.append(mailbox)
+        return ("NO", [b"Mailbox doesn't exist"])
+
+    def close(self):
+        raise IMAP4.error("command CLOSE illegal in state AUTH, only allowed in states SELECTED")
 
 
 @tagged("post_install", "-at_install")
@@ -147,3 +157,14 @@ class TestFetchFlow(MailCommon):
             server._fetch_mail()
 
         self.assertEqual(connection.selected_folders, ["Fakt&APo-ry"])
+
+    def test_refused_select_reports_the_folder_and_still_logs_out(self):
+        self.server.imap_folder = "Missing"
+        connection = RefusingSelectIMAP4({}, [])
+
+        with self._fetching_server(connection) as server:
+            exception = server._fetch_mail()
+            self.assertIn("IMAP SELECT of folder 'Missing' returned NO", str(exception))
+            self.assertIn("IMAP SELECT of folder 'Missing'", server.error_message)
+
+        self.assertTrue(connection.logged_out)

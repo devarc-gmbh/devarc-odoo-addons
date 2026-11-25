@@ -115,10 +115,16 @@ class TestImapSelection(TransactionCase):
         with self.assertRaises(ValidationError):
             self._create_server(imap_search_criteria='(UNSEEN SUBJECT "Faktúra")')
 
-    def test_imap_literal_in_folder_or_criteria_is_rejected(self):
-        for values in ({"imap_folder": "Odoo {5}"}, {"imap_search_criteria": "(UNSEEN SUBJECT {5})"}):
-            with self.subTest(values=values), self.assertRaises(ValidationError):
-                self._create_server(**values)
+    def test_trailing_imap_literal_in_criteria_is_rejected(self):
+        with self.assertRaises(ValidationError):
+            self._create_server(imap_search_criteria="(UNSEEN SUBJECT {5}")
+
+    def test_quoted_braces_in_folder_and_criteria_are_accepted(self):
+        server = self._create_server(
+            imap_folder="Odoo {5}", imap_search_criteria='(UNSEEN SUBJECT "{5}")'
+        )
+
+        self.assertEqual(server._imap_mailbox_argument(), '"Odoo {5}"')
 
     def test_rejected_select_raises_error_naming_the_folder(self):
         server = self._create_server(imap_folder="Missing")
