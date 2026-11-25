@@ -8,6 +8,7 @@ from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 
 UNSEEN_PREFIX = re.compile(r"[\s(]*UNSEEN\b", re.IGNORECASE)
+IMAP_LITERAL = re.compile(r"\{\d+\+?\}")
 IMAP_ATOM_FOLDER = re.compile(r"[A-Za-z0-9._/\-\[\]&]+")
 CORE_UNREAD_CRITERIA = "(UNSEEN)"
 
@@ -45,6 +46,13 @@ class FetchmailServer(models.Model):
                         "every run."
                     )
                 )
+            if not (server.imap_search_criteria or "").isascii():
+                raise ValidationError(
+                    self.env._(
+                        "The IMAP Search Criteria field must contain ASCII characters only, "
+                        "the IMAP connection cannot send other characters in a search."
+                    )
+                )
 
     @api.constrains("imap_folder", "imap_search_criteria")
     def _check_imap_line_breaks(self):
@@ -55,6 +63,13 @@ class FetchmailServer(models.Model):
                     self.env._(
                         "IMAP folder and search criteria must not contain line breaks, the "
                         "IMAP server would read the rest of the line as a separate command."
+                    )
+                )
+            if any(IMAP_LITERAL.search(value) for value in values):
+                raise ValidationError(
+                    self.env._(
+                        "IMAP folder and search criteria must not contain an IMAP literal "
+                        "such as {5}, the IMAP server would wait for data that is never sent."
                     )
                 )
 
@@ -87,7 +102,12 @@ class FetchmailServer(models.Model):
         self.ensure_one()
         if args or kwargs:
             return select(*args, **kwargs)
-        return select(self._imap_mailbox_argument())
+        result, data = select(self._imap_mailbox_argument())
+        if result != "OK":
+            raise IMAP4.error(
+                f"IMAP SELECT of folder {self.imap_folder!r} returned {result}: {data}"
+            )
+        return result, data
 
     def _imap_search_unread(self, search, charset, *criteria):
         self.ensure_one()

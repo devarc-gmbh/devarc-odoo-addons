@@ -43,8 +43,18 @@ msgid ""
 "IMAP folder and search criteria must not contain line breaks, the IMAP "
 "server would read the rest of the line as a separate command."
 msgstr ""
-"IMAP-Ordner und Suchkriterium duerfen keine Zeilenumbrueche enthalten, "
-"der IMAP-Server wuerde den Rest der Zeile als eigenen Befehl lesen."
+"IMAP-Ordner und Suchkriterium dürfen keine Zeilenumbrüche enthalten, "
+"der IMAP-Server würde den Rest der Zeile als eigenen Befehl lesen."
+
+#. module: fetchmail_imap_filter
+#. odoo-python
+#: code:addons/fetchmail_imap_filter/models/fetchmail_server.py:0
+msgid ""
+"IMAP folder and search criteria must not contain an IMAP literal such as "
+"{5}, the IMAP server would wait for data that is never sent."
+msgstr ""
+"IMAP-Ordner und Suchkriterium dürfen kein IMAP-Literal wie {5} "
+"enthalten, der IMAP-Server würde auf Daten warten, die nie gesendet werden."
 
 #. module: fetchmail_imap_filter
 #: model:ir.model.fields,help:fetchmail_imap_filter.field_fetchmail_server__imap_folder
@@ -55,10 +65,10 @@ msgid ""
 "automatically. Ignored for POP servers."
 msgstr ""
 "IMAP-Postfach, aus dem die eingehenden Mails abgeholt werden, z. B. "
-"'INBOX' oder ein Gmail-Label wie 'Odoo', das von einem Filter befuellt "
+"'INBOX' oder ein Gmail-Label wie 'Odoo', das von einem Filter befüllt "
 "wird. Nicht-ASCII-Zeichen werden automatisch in IMAP Modified UTF-7 "
 "kodiert und Namen mit Leerzeichen oder Sonderzeichen in "
-"Anfuehrungszeichen gesetzt. Bei POP-Servern ohne Wirkung."
+"Anführungszeichen gesetzt. Bei POP-Servern ohne Wirkung."
 
 #. module: fetchmail_imap_filter
 #. odoo-python
@@ -68,9 +78,9 @@ msgid ""
 "combined with UNSEEN. Criteria starting with NOT or OR can match already "
 "read mails, which are then fetched and processed on every run."
 msgstr ""
-"Das IMAP-Suchkriterium muss mit UNSEEN beginnen, damit jeder Suchschluessel "
+"Das IMAP-Suchkriterium muss mit UNSEEN beginnen, damit jeder Suchschlüssel "
 "mit UNSEEN kombiniert wird. Kriterien, die mit NOT oder OR beginnen, "
-"koennen bereits gelesene Mails treffen, die dann bei jedem Lauf erneut "
+"können bereits gelesene Mails treffen, die dann bei jedem Lauf erneut "
 "abgeholt und verarbeitet werden."
 
 #. module: fetchmail_imap_filter
@@ -84,6 +94,16 @@ msgstr ""
 "'(UNSEEN X-GM-RAW \"deliveredto:odoo@example.com\")' holt nur jene "
 "Mails, die eine Catch-all-Regel an dieses Postfach zugestellt hat. Bei "
 "POP-Servern ohne Wirkung."
+
+#. module: fetchmail_imap_filter
+#. odoo-python
+#: code:addons/fetchmail_imap_filter/models/fetchmail_server.py:0
+msgid ""
+"The IMAP Search Criteria field must contain ASCII characters only, the IMAP "
+"connection cannot send other characters in a search."
+msgstr ""
+"Das Feld IMAP-Suchkriterium darf nur ASCII-Zeichen enthalten, die "
+"IMAP-Verbindung kann andere Zeichen in einer Suche nicht senden."
 
 #. module: fetchmail_imap_filter
 #: model:ir.model,name:fetchmail_imap_filter.model_fetchmail_server

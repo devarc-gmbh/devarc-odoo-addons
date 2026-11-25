@@ -32,6 +32,7 @@ class TestGmailServer(TransactionCase):
         imap_select = connection.select
         imap_search = connection.search
         imap_search.return_value = ("OK", [b"3 5"])
+        imap_select.return_value = ("OK", [b"5"])
         with (
             patch("odoo.addons.mail.models.fetchmail.IMAP4Connection", return_value=connection),
             patch(

@@ -44,6 +44,14 @@ msgid ""
 msgstr ""
 
 #. module: fetchmail_imap_filter
+#. odoo-python
+#: code:addons/fetchmail_imap_filter/models/fetchmail_server.py:0
+msgid ""
+"IMAP folder and search criteria must not contain an IMAP literal such as "
+"{5}, the IMAP server would wait for data that is never sent."
+msgstr ""
+
+#. module: fetchmail_imap_filter
 #: model:ir.model.fields,help:fetchmail_imap_filter.field_fetchmail_server__imap_folder
 msgid ""
 "IMAP mailbox the incoming mails are fetched from, e.g. 'INBOX' or a Gmail "
@@ -67,6 +75,14 @@ msgid ""
 "IMAP search criteria selecting which mails are fetched, e.g. '(UNSEEN X-GM-"
 "RAW \"deliveredto:odoo@example.com\")' fetches only the mails a catch-all "
 "rule delivered to this mailbox. Ignored for POP servers."
+msgstr ""
+
+#. module: fetchmail_imap_filter
+#. odoo-python
+#: code:addons/fetchmail_imap_filter/models/fetchmail_server.py:0
+msgid ""
+"The IMAP Search Criteria field must contain ASCII characters only, the IMAP "
+"connection cannot send other characters in a search."
 msgstr ""
 
 #. module: fetchmail_imap_filter

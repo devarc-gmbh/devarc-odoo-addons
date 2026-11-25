@@ -47,6 +47,16 @@ msgstr ""
 "riadka, IMAP server by zvyšok riadka prečítal ako samostatný príkaz."
 
 #. module: fetchmail_imap_filter
+#. odoo-python
+#: code:addons/fetchmail_imap_filter/models/fetchmail_server.py:0
+msgid ""
+"IMAP folder and search criteria must not contain an IMAP literal such as "
+"{5}, the IMAP server would wait for data that is never sent."
+msgstr ""
+"IMAP priečinok ani vyhľadávacie kritérium nesmú obsahovať IMAP literál "
+"ako {5}, IMAP server by čakal na dáta, ktoré nikdy neprídu."
+
+#. module: fetchmail_imap_filter
 #: model:ir.model.fields,help:fetchmail_imap_filter.field_fetchmail_server__imap_folder
 msgid ""
 "IMAP mailbox the incoming mails are fetched from, e.g. 'INBOX' or a Gmail "
@@ -83,6 +93,16 @@ msgstr ""
 "'(UNSEEN X-GM-RAW \"deliveredto:odoo@example.com\")' stiahne len tie, "
 "ktoré do tejto schránky doručilo catch-all pravidlo. Pri POP serveroch "
 "sa ignoruje."
+
+#. module: fetchmail_imap_filter
+#. odoo-python
+#: code:addons/fetchmail_imap_filter/models/fetchmail_server.py:0
+msgid ""
+"The IMAP Search Criteria field must contain ASCII characters only, the IMAP "
+"connection cannot send other characters in a search."
+msgstr ""
+"Pole IMAP vyhľadávacie kritérium smie obsahovať len ASCII znaky, IMAP "
+"spojenie iné znaky vo vyhľadávaní odoslať nevie."
 
 #. module: fetchmail_imap_filter
 #: model:ir.model,name:fetchmail_imap_filter.model_fetchmail_server
