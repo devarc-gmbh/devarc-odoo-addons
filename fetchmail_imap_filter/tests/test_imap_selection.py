@@ -26,9 +26,9 @@ class TestImapSelection(TransactionCase):
             }
         )
 
-    def _connect_mocked_imap(self, server):
+    def _connect_mocked_imap(self, server, search_response=("OK", [b""])):
         connection = Mock()
-        connection.search.return_value = ("OK", [b""])
+        connection.search.return_value = search_response
         with patch(
             "odoo.addons.mail.models.fetchmail.OdooIMAP4_SSL", return_value=connection
         ) as imap_class:
@@ -64,11 +64,7 @@ class TestImapSelection(TransactionCase):
         self.assertEqual(connection.search.call_args, ((None, GMAIL_RAW_CRITERIA),))
 
     def test_unread_message_numbers_are_read_from_search_result(self):
-        server = self._create_server()
-        connection = Mock()
-        connection.search.return_value = ("OK", [b"4 7 9"])
-        with patch("odoo.addons.mail.models.fetchmail.OdooIMAP4_SSL", return_value=connection):
-            server._connect__(allow_archived=True)
+        connection = self._connect_mocked_imap(self._create_server(), ("OK", [b"4 7 9"]))
 
         self.assertEqual(connection.check_unread_messages(), 3)
         self.assertEqual(connection._unread_messages, [b"9", b"7", b"4"])
@@ -107,12 +103,10 @@ class TestImapSelection(TransactionCase):
         connection.select.assert_called_once_with('"Odoo \\"Work\\"\\\\Mail"')
 
     def test_search_error_response_raises_and_leaves_no_message_numbers(self):
-        server = self._create_server()
-        connection = Mock()
+        connection = self._connect_mocked_imap(
+            self._create_server(), ("NO", [b"SEARCH not allowed"])
+        )
         connection._unread_messages = None
-        connection.search.return_value = ("NO", [b"SEARCH not allowed"])
-        with patch("odoo.addons.mail.models.fetchmail.OdooIMAP4_SSL", return_value=connection):
-            server._connect__(allow_archived=True)
 
         with self.assertRaises(IMAP4.error) as error:
             connection.check_unread_messages()
@@ -122,11 +116,7 @@ class TestImapSelection(TransactionCase):
         self.assertIsNone(connection._unread_messages)
 
     def test_search_without_untagged_response_counts_zero(self):
-        server = self._create_server()
-        connection = Mock()
-        connection.search.return_value = ("OK", [None])
-        with patch("odoo.addons.mail.models.fetchmail.OdooIMAP4_SSL", return_value=connection):
-            server._connect__(allow_archived=True)
+        connection = self._connect_mocked_imap(self._create_server(), ("OK", [None]))
 
         self.assertEqual(connection.check_unread_messages(), 0)
         self.assertEqual(connection._unread_messages, [])
