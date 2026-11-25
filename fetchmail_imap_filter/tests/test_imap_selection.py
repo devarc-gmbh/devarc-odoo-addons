@@ -26,10 +26,11 @@ class TestImapSelection(TransactionCase):
             }
         )
 
-    def _connect_mocked_imap(self, server, search_result=("OK", [b""])):
+    def _connect_mocked_imap(self, server, search_result=("OK", [b""]), select_result=("OK", [b"0"])):
         connection = Mock()
         connection._unread_messages = None
         connection.search.return_value = search_result
+        connection.select.return_value = select_result
         with patch(
             "odoo.addons.mail.models.fetchmail.OdooIMAP4_SSL", return_value=connection
         ) as imap_class:
@@ -109,6 +110,28 @@ class TestImapSelection(TransactionCase):
             with self.subTest(folder=folder):
                 server.imap_folder = folder
                 self.assertEqual(server._imap_mailbox_argument(), mailbox)
+
+    def test_non_ascii_search_criteria_is_rejected(self):
+        with self.assertRaises(ValidationError):
+            self._create_server(imap_search_criteria='(UNSEEN SUBJECT "Faktúra")')
+
+    def test_imap_literal_in_folder_or_criteria_is_rejected(self):
+        for values in ({"imap_folder": "Odoo {5}"}, {"imap_search_criteria": "(UNSEEN SUBJECT {5})"}):
+            with self.subTest(values=values), self.assertRaises(ValidationError):
+                self._create_server(**values)
+
+    def test_rejected_select_raises_error_naming_the_folder(self):
+        server = self._create_server(imap_folder="Missing")
+        connection = self._connect_mocked_imap(
+            server, select_result=("NO", [b"Mailbox doesn't exist"])
+        )
+
+        with self.assertRaises(IMAP4.error) as error:
+            connection.check_unread_messages()
+
+        self.assertIn("'Missing'", str(error.exception))
+        self.assertIn("Mailbox doesn't exist", str(error.exception))
+        connection.search.assert_not_called()
 
     def test_folder_with_quotes_and_backslashes_is_escaped(self):
         server = self._create_server(imap_folder='Odoo "Work"\\Mail')

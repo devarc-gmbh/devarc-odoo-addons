@@ -30,6 +30,7 @@ class TestGmailServer(TransactionCase):
     def test_gmail_connection_searches_the_configured_folder(self):
         connection = Mock()
         connection.search.return_value = ("OK", [b"3 5"])
+        connection.select.return_value = ("OK", [b"5"])
         with (
             patch("odoo.addons.mail.models.fetchmail.OdooIMAP4_SSL", return_value=connection),
             patch(
