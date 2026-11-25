@@ -8,23 +8,21 @@ from odoo.tests import TransactionCase, tagged
 HEADER_CRITERIA = '(UNSEEN HEADER Delivered-To "odoo@example.com")'
 GMAIL_RAW_CRITERIA = '(UNSEEN X-GM-RAW "deliveredto:odoo@example.com")'
 GMAIL_ALL_MAIL_FOLDER = "[Gmail]/All Mail"
+IMAP_SERVER_VALUES = {
+    "name": "Filtered mailbox",
+    "server_type": "imap",
+    "server": "imap.example.com",
+    "port": 993,
+    "is_ssl": True,
+    "user": "odoo@example.com",
+    "password": "secret",
+}
 
 
 @tagged("post_install", "-at_install")
 class TestImapSelection(TransactionCase):
     def _create_server(self, **values):
-        return self.env["fetchmail.server"].create(
-            {
-                "name": "Filtered mailbox",
-                "server_type": "imap",
-                "server": "imap.example.com",
-                "port": 993,
-                "is_ssl": True,
-                "user": "odoo@example.com",
-                "password": "secret",
-                **values,
-            }
-        )
+        return self.env["fetchmail.server"].create({**IMAP_SERVER_VALUES, **values})
 
     def _connect_mocked_imap(self, server, search_result=("OK", [b""]), select_result=("OK", [b"0"])):
         connection = Mock()

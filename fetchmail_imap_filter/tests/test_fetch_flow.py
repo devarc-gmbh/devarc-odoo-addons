@@ -8,7 +8,7 @@ from odoo.addons.mail.models.fetchmail import OdooIMAP4
 from odoo.addons.mail.tests.common import MailCommon
 from odoo.tests import tagged
 
-from .test_imap_selection import HEADER_CRITERIA
+from .test_imap_selection import HEADER_CRITERIA, IMAP_SERVER_VALUES
 
 MATCHING_SUBJECT = "Question about your offer"
 OTHER_SUBJECT = "Private mail for the mailbox owner"
@@ -78,13 +78,7 @@ class TestFetchFlow(MailCommon):
         )
         cls.server = cls.env["fetchmail.server"].create(
             {
-                "name": "Filtered mailbox",
-                "server_type": "imap",
-                "server": "imap.example.com",
-                "port": 993,
-                "is_ssl": True,
-                "user": "odoo@example.com",
-                "password": "secret",
+                **IMAP_SERVER_VALUES,
                 "imap_folder": "Odoo",
                 "imap_search_criteria": HEADER_CRITERIA,
                 "state": "done",
