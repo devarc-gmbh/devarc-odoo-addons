@@ -7,6 +7,7 @@ from odoo.exceptions import ValidationError
 
 UNSEEN_PREFIX = re.compile(r"[\s(]*UNSEEN\b", re.IGNORECASE)
 IMAP_ATOM_FOLDER = re.compile(r"[A-Za-z0-9._/\-\[\]&]+")
+CORE_UNREAD_CRITERIA = "(UNSEEN)"
 
 
 class FetchmailServer(models.Model):
@@ -22,7 +23,7 @@ class FetchmailServer(models.Model):
     )
     imap_search_criteria = fields.Char(
         string="IMAP Search Criteria",
-        default="(UNSEEN)",
+        default=CORE_UNREAD_CRITERIA,
         required=True,
         help="IMAP search criteria selecting which mails are fetched, e.g. "
         "'(UNSEEN X-GM-RAW \"deliveredto:odoo@example.com\")' fetches only the mails a "
@@ -76,9 +77,9 @@ class FetchmailServer(models.Model):
 
     def _imap_search_unread(self, search, charset, *criteria):
         self.ensure_one()
-        if (charset, *criteria) != (None, "(UNSEEN)"):
+        if (charset, *criteria) != (None, CORE_UNREAD_CRITERIA):
             return search(charset, *criteria)
-        criteria = self.imap_search_criteria or "(UNSEEN)"
+        criteria = self.imap_search_criteria or CORE_UNREAD_CRITERIA
         result, data = search(None, criteria)
         if result != "OK":
             raise IMAP4.error(
