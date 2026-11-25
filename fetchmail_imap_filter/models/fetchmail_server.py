@@ -8,7 +8,7 @@ from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 
 UNSEEN_PREFIX = re.compile(r"[\s(]*UNSEEN\b", re.IGNORECASE)
-IMAP_LITERAL = re.compile(r"\{\d+\+?\}")
+IMAP_LITERAL = re.compile(r"\{\d+\+?\}\s*$")
 IMAP_ATOM_FOLDER = re.compile(r"[A-Za-z0-9._/\-\[\]&]+")
 
 
@@ -64,11 +64,11 @@ class FetchmailServer(models.Model):
                         "IMAP server would read the rest of the line as a separate command."
                     )
                 )
-            if any(IMAP_LITERAL.search(value) for value in values):
+            if IMAP_LITERAL.search(server.imap_search_criteria or ""):
                 raise ValidationError(
                     self.env._(
-                        "IMAP folder and search criteria must not contain an IMAP literal "
-                        "such as {5}, the IMAP server would wait for data that is never sent."
+                        "IMAP search criteria must not end with an IMAP literal such as {5}, "
+                        "the IMAP server would wait for data that is never sent."
                     )
                 )
 
