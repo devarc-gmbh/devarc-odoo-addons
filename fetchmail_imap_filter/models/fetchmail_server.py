@@ -80,7 +80,7 @@ class FetchmailServer(models.Model):
             connection.select = functools.partial(self._imap_select_folder, connection.select)
             connection.search = functools.partial(self._imap_search_unread, connection.search)
             connection.close = functools.partial(
-                self._imap_close_selected_mailbox, connection, connection.close
+                self._imap_close_selected_mailbox, connection.close
             )
         return connection
 
@@ -113,10 +113,11 @@ class FetchmailServer(models.Model):
             )
         return result, data
 
-    def _imap_close_selected_mailbox(self, connection, close):
-        if connection.state == "SELECTED":
+    def _imap_close_selected_mailbox(self, close):
+        try:
             return close()
-        return None
+        except IMAP4.error:
+            return None
 
     def _imap_search_unread(self, search, charset, *criteria):
         self.ensure_one()
