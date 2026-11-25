@@ -129,6 +129,6 @@ class TestFetchFlow(MailCommon):
         self.assertEqual(connection.selected_folders, ["Odoo"])
         self.assertEqual(connection.search_calls, [(None, CRITERIA)])
         self.assertEqual(connection.fetched_numbers, [b"1"])
-        self.assertIn((b"1", "+FLAGS", "\Seen"), connection.stored_flags)
+        self.assertIn((b"1", "+FLAGS", "\\Seen"), connection.stored_flags)
         self.assertNotIn(b"2", [stored[0] for stored in connection.stored_flags])
         self.assertTrue(connection.logged_out)
