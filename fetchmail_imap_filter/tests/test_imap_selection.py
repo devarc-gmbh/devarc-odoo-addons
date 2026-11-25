@@ -42,8 +42,7 @@ class TestImapSelection(TransactionCase):
 
     def _core_unread_numbers(self, connection):
         connection.select()
-        result, data = connection.search(None, "(UNSEEN)")
-        return data[0].split()
+        return connection.search(None, "(UNSEEN)")[1][0].split()
 
     def test_default_folder_and_criteria_keep_core_behaviour(self):
         server = self._create_server()

@@ -54,6 +54,13 @@ class FetchmailServer(models.Model):
                         "the IMAP connection cannot send other characters in a search."
                     )
                 )
+            if IMAP_LITERAL.search(criteria):
+                raise ValidationError(
+                    self.env._(
+                        "IMAP search criteria must not end with an IMAP literal such as {5}, "
+                        "the IMAP server would wait for data that is never sent."
+                    )
+                )
 
     @api.constrains("imap_folder", "imap_search_criteria")
     def _check_imap_line_breaks(self):
@@ -64,13 +71,6 @@ class FetchmailServer(models.Model):
                     self.env._(
                         "IMAP folder and search criteria must not contain line breaks, the "
                         "IMAP server would read the rest of the line as a separate command."
-                    )
-                )
-            if IMAP_LITERAL.search(server.imap_search_criteria or ""):
-                raise ValidationError(
-                    self.env._(
-                        "IMAP search criteria must not end with an IMAP literal such as {5}, "
-                        "the IMAP server would wait for data that is never sent."
                     )
                 )
 
