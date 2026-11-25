@@ -1,3 +1,4 @@
+from contextlib import contextmanager
 from email.message import EmailMessage
 from email.utils import formatdate
 from unittest.mock import patch
@@ -91,6 +92,15 @@ class TestFetchFlow(MailCommon):
         mail.set_content("Good morning, I have a question about your offer.")
         return mail.as_bytes()
 
+    @contextmanager
+    def _fetching_server(self, connection):
+        with (
+            self.enter_registry_test_mode(),
+            self.registry.cursor() as cr,
+            patch("odoo.addons.mail.models.fetchmail.OdooIMAP4_SSL", return_value=connection),
+        ):
+            yield self.server.with_env(self.server.env(cr=cr))
+
     def test_matching_mail_creates_record_and_other_mail_is_left_on_server(self):
         self.assertEqual(self.alias.alias_full_name, "kontakt@test.mycompany.com")
         matching = self._build_mail(
@@ -107,12 +117,7 @@ class TestFetchFlow(MailCommon):
         )
         connection = FakeIMAP4({b"1": matching, b"2": other}, [b"1"])
 
-        with (
-            self.enter_registry_test_mode(),
-            self.registry.cursor() as cr,
-            patch("odoo.addons.mail.models.fetchmail.OdooIMAP4_SSL", return_value=connection),
-        ):
-            server = self.server.with_env(self.server.env(cr=cr))
+        with self._fetching_server(connection) as server:
             self.assertIsNone(server._fetch_mail())
 
             partners = server.env["res.partner"].search(
@@ -138,11 +143,7 @@ class TestFetchFlow(MailCommon):
         self.server.imap_folder = "Faktúry"
         connection = FakeIMAP4({}, [])
 
-        with (
-            self.enter_registry_test_mode(),
-            self.registry.cursor() as cr,
-            patch("odoo.addons.mail.models.fetchmail.OdooIMAP4_SSL", return_value=connection),
-        ):
-            self.server.with_env(self.server.env(cr=cr))._fetch_mail()
+        with self._fetching_server(connection) as server:
+            server._fetch_mail()
 
         self.assertEqual(connection.selected_folders, ["Fakt&APo-ry"])
