@@ -79,10 +79,14 @@ class TestFetchFlow(MailCommon):
         )
 
     @contextmanager
-    def _registry_test_mode(self):
+    def _fetching_server(self, connection):
         self.registry.enter_test_mode(self.cr)
         try:
-            yield
+            with (
+                self.registry.cursor() as cr,
+                patch("odoo.addons.mail.models.fetchmail.IMAP4Connection", return_value=connection),
+            ):
+                yield self.server.with_env(self.server.env(cr=cr))
         finally:
             self.registry.leave_test_mode()
 
@@ -113,12 +117,7 @@ class TestFetchFlow(MailCommon):
         )
         connection = FakeIMAP4({b"1": matching, b"2": other}, [b"1"])
 
-        with (
-            self._registry_test_mode(),
-            self.registry.cursor() as cr,
-            patch("odoo.addons.mail.models.fetchmail.IMAP4Connection", return_value=connection),
-        ):
-            server = self.server.with_env(self.server.env(cr=cr))
+        with self._fetching_server(connection) as server:
             self.assertTrue(server.fetch_mail())
 
             partners = server.env["res.partner"].search(
@@ -144,11 +143,7 @@ class TestFetchFlow(MailCommon):
         self.server.imap_folder = "Faktúry"
         connection = FakeIMAP4({}, [])
 
-        with (
-            self._registry_test_mode(),
-            self.registry.cursor() as cr,
-            patch("odoo.addons.mail.models.fetchmail.IMAP4Connection", return_value=connection),
-        ):
-            self.server.with_env(self.server.env(cr=cr)).fetch_mail()
+        with self._fetching_server(connection) as server:
+            server.fetch_mail()
 
         self.assertEqual(connection.selected_folders, ["Fakt&APo-ry"])
