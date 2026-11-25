@@ -1,4 +1,6 @@
+import base64
 import functools
+import itertools
 import re
 from imaplib import IMAP4
 
@@ -18,8 +20,9 @@ class FetchmailServer(models.Model):
         default="INBOX",
         required=True,
         help="IMAP mailbox the incoming mails are fetched from, e.g. 'INBOX' or a Gmail "
-        "label such as 'Odoo' fed by a filter. Names containing a space or a special "
-        "character are quoted automatically. Ignored for POP servers.",
+        "label such as 'Odoo' fed by a filter. Non-ASCII characters are encoded to IMAP "
+        "modified UTF-7 and names containing a space or a special character are quoted "
+        "automatically. Ignored for POP servers.",
     )
     imap_search_criteria = fields.Char(
         string="IMAP Search Criteria",
@@ -62,8 +65,19 @@ class FetchmailServer(models.Model):
             connection.search = functools.partial(self._imap_search_unread, connection.search)
         return connection
 
+    def _imap_utf7_encode(self, name):
+        parts = []
+        for printable, chars in itertools.groupby(name, key=lambda char: " " <= char <= "~"):
+            run = "".join(chars)
+            if printable:
+                parts.append(run.replace("&", "&-"))
+            else:
+                encoded = base64.b64encode(run.encode("utf-16-be")).decode("ascii")
+                parts.append(f"&{encoded.rstrip('=').replace('/', ',')}-")
+        return "".join(parts)
+
     def _imap_mailbox_argument(self):
-        folder = self.imap_folder or "INBOX"
+        folder = self._imap_utf7_encode(self.imap_folder or "INBOX")
         if IMAP_ATOM_FOLDER.fullmatch(folder):
             return folder
         escaped = folder.replace("\\", "\\\\").replace('"', '\\"')
