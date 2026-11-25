@@ -133,3 +133,16 @@ class TestFetchFlow(MailCommon):
         self.assertIn((b"1", "+FLAGS", "\\Seen"), connection.stored_flags)
         self.assertNotIn(b"2", [stored[0] for stored in connection.stored_flags])
         self.assertTrue(connection.logged_out)
+
+    def test_non_ascii_folder_is_selected_in_modified_utf7(self):
+        self.server.imap_folder = "Faktúry"
+        connection = FakeIMAP4({}, [])
+
+        with (
+            self.enter_registry_test_mode(),
+            self.registry.cursor() as cr,
+            patch("odoo.addons.mail.models.fetchmail.OdooIMAP4_SSL", return_value=connection),
+        ):
+            self.server.with_env(self.server.env(cr=cr))._fetch_mail()
+
+        self.assertEqual(connection.selected_folders, ["Fakt&APo-ry"])

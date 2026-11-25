@@ -97,6 +97,19 @@ class TestImapSelection(TransactionCase):
         connection.check_unread_messages()
         connection.select.assert_called_once_with('"[Gmail]/All Mail"')
 
+    def test_non_ascii_and_ampersand_folders_are_encoded_to_modified_utf7(self):
+        expected = {
+            "Faktúry": "Fakt&APo-ry",
+            "Entwürfe": "Entw&APw-rfe",
+            "A&B": "A&-B",
+            "INBOX": "INBOX",
+        }
+        server = self._create_server()
+        for folder, mailbox in expected.items():
+            with self.subTest(folder=folder):
+                server.imap_folder = folder
+                self.assertEqual(server._imap_mailbox_argument(), mailbox)
+
     def test_folder_with_quotes_and_backslashes_is_escaped(self):
         server = self._create_server(imap_folder='Odoo "Work"\\Mail')
 
