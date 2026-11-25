@@ -8,7 +8,7 @@ from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 
 UNSEEN_PREFIX = re.compile(r"[\s(]*UNSEEN\b", re.IGNORECASE)
-IMAP_LITERAL = re.compile(r"\{\d+\+?\}")
+IMAP_LITERAL = re.compile(r"\{\d+\+?\}\s*$")
 IMAP_ATOM_FOLDER = re.compile(r"[A-Za-z0-9._/\-\[\]&]+")
 CORE_UNREAD_CRITERIA = "(UNSEEN)"
 
@@ -66,11 +66,11 @@ class FetchmailServer(models.Model):
                         "IMAP server would read the rest of the line as a separate command."
                     )
                 )
-            if any(IMAP_LITERAL.search(value) for value in values):
+            if IMAP_LITERAL.search(server.imap_search_criteria or ""):
                 raise ValidationError(
                     self.env._(
-                        "IMAP folder and search criteria must not contain an IMAP literal "
-                        "such as {5}, the IMAP server would wait for data that is never sent."
+                        "IMAP search criteria must not end with an IMAP literal such as {5}, "
+                        "the IMAP server would wait for data that is never sent."
                     )
                 )
 
@@ -79,6 +79,9 @@ class FetchmailServer(models.Model):
         if self._get_connection_type() == "imap":
             connection.select = functools.partial(self._imap_select_folder, connection.select)
             connection.search = functools.partial(self._imap_search_unread, connection.search)
+            connection.close = functools.partial(
+                self._imap_close_selected_mailbox, connection, connection.close
+            )
         return connection
 
     def _imap_utf7_encode(self, name):
@@ -109,6 +112,11 @@ class FetchmailServer(models.Model):
                 f"IMAP SELECT of folder {self.imap_folder!r} returned {result}: {data}"
             )
         return result, data
+
+    def _imap_close_selected_mailbox(self, connection, close):
+        if connection.state == "SELECTED":
+            return close()
+        return None
 
     def _imap_search_unread(self, search, charset, *criteria):
         self.ensure_one()

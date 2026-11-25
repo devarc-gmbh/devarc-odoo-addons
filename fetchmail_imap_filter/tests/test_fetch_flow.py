@@ -1,9 +1,11 @@
 from contextlib import contextmanager
 from email.message import EmailMessage
 from email.utils import formatdate
+from imaplib import IMAP4
 from unittest.mock import patch
 
 from odoo.addons.mail.tests.common import MailCommon
+from odoo.exceptions import ValidationError
 from odoo.tests import tagged
 
 MATCHING_SUBJECT = "Question about your offer"
@@ -21,6 +23,7 @@ class FakeIMAP4:
         self.stored_flags = []
         self.credentials = None
         self.logged_out = False
+        self.state = "AUTH"
 
     def login(self, user, password):
         self.credentials = (user, password)
@@ -28,6 +31,7 @@ class FakeIMAP4:
 
     def select(self, mailbox="INBOX", readonly=False):
         self.selected_folders.append(mailbox)
+        self.state = "SELECTED"
         return ("OK", [str(len(self.messages)).encode()])
 
     def search(self, charset, *criteria):
@@ -48,6 +52,15 @@ class FakeIMAP4:
     def logout(self):
         self.logged_out = True
         return ("BYE", [b"LOGOUT completed"])
+
+
+class RefusingSelectIMAP4(FakeIMAP4):
+    def select(self, mailbox="INBOX", readonly=False):
+        self.selected_folders.append(mailbox)
+        return ("NO", [b"Mailbox doesn't exist"])
+
+    def close(self):
+        raise IMAP4.error("command CLOSE illegal in state AUTH, only allowed in states SELECTED")
 
 
 @tagged("post_install", "-at_install")
@@ -147,3 +160,13 @@ class TestFetchFlow(MailCommon):
             server.fetch_mail()
 
         self.assertEqual(connection.selected_folders, ["Fakt&APo-ry"])
+
+    def test_refused_select_reports_the_folder_and_still_logs_out(self):
+        self.server.imap_folder = "Missing"
+        connection = RefusingSelectIMAP4({}, [])
+
+        with self.assertRaises(ValidationError) as error, self._fetching_server(connection) as server:
+            server.fetch_mail()
+
+        self.assertIn("IMAP SELECT of folder 'Missing' returned NO", str(error.exception))
+        self.assertTrue(connection.logged_out)

@@ -36,7 +36,7 @@ runs a normal Gmail search-box query over IMAP:
   `Delivered-To` header check above.
 
 `X-GM-RAW` only works against Gmail's own IMAP server; it is rejected by other IMAP servers, and the
-fetch now fails outright with the IMAP error recorded on the server's Error field instead of being
+fetch now fails outright with the IMAP error shown by Fetch Now and written to the server log instead of being
 silently misread. Some IMAP servers, Gmail included, do not consistently return matches for
 `HEADER` search the same way a `X-GM-RAW`/native search does - always verify a new criteria with the
 read-only probe in [docs/gmail-catchall.md](gmail-catchall.md) before relying on it in production,
@@ -85,17 +85,19 @@ search command as ASCII; saving a criteria with a character such as `ú` fails w
 Folder names may contain any character: before `SELECT` they are encoded to IMAP modified UTF-7
 (RFC 3501 section 5.1.3), e.g. `Faktúry` is sent as `Fakt&APo-ry`.
 
-An IMAP literal marker such as `{5}` is rejected in both fields, because the IMAP server would
-wait for 5 bytes of literal data that are never sent:
+A criteria that ends with an IMAP literal marker such as `{5}` is rejected, because the IMAP server
+would wait for 5 bytes of literal data that are never sent. Braces inside a quoted value, e.g.
+`(UNSEEN SUBJECT "{5}")`, and in a folder name, which is always sent quoted, are accepted:
 
-> IMAP folder and search criteria must not contain an IMAP literal such as {5}, the IMAP server would wait for data that is never sent.
+> IMAP search criteria must not end with an IMAP literal such as {5}, the IMAP server would wait for data that is never sent.
 
 ## Wrong folder
 
 If the server answers `SELECT` with anything other than `OK` (folder does not exist, wrong case or
 label spelling), the fetch stops before any search with an IMAP error that names the folder, e.g.
-`IMAP SELECT of folder 'Odoo' returned NO: [b"Mailbox doesn't exist"]`. Odoo logs it and records
-it on the server like any other fetch error; no mail is fetched until the folder is fixed.
+`IMAP SELECT of folder 'Odoo' returned NO: [b"Mailbox doesn't exist"]`.
+With Fetch Now Odoo shows it in the error dialog; the scheduled fetch writes it to the server
+log and goes on with the next server. No mail is fetched until the folder is fixed.
 
 ## POP servers are not affected
 
@@ -121,12 +123,12 @@ exist yet in that case.
 |---|---|---|
 | Save fails with "IMAP search criteria must start with UNSEEN" | The criteria does not start with `UNSEEN` (e.g. `(ALL)`, `(NOT UNSEEN)`, `(OR UNSEEN SEEN)`, or `UNSEEN` was moved or deleted while editing). | Put `UNSEEN` first inside the parentheses, e.g. `(UNSEEN ...)`. |
 | Save fails with "must not contain line breaks" | The folder or criteria field has a stray `\r` or `\n` in it, usually from pasting text copied from another app or document. | Retype or clean the value; the addon rejects line breaks to block IMAP command injection. |
-| Fetch fails with an IMAP error mentioning `SEARCH ... returned NO` or `BAD` | The criteria is syntactically invalid for this server, or uses `X-GM-RAW` against a non-Gmail IMAP server. | Fix the criteria syntax, or drop `X-GM-RAW` outside Gmail; the exact IMAP response is in the server's Error field. |
+| Fetch fails with an IMAP error mentioning `SEARCH ... returned NO` or `BAD` | The criteria is syntactically invalid for this server, or uses `X-GM-RAW` against a non-Gmail IMAP server. | Fix the criteria syntax, or drop `X-GM-RAW` outside Gmail; the exact IMAP response is shown by Fetch Now and written to the server log. |
 | Folder name with a space or special character (e.g. `[Gmail]/All Mail`) fails to select when typed with manual quotes | The addon already quotes `imap_folder` automatically before `SELECT`; quotes added manually in the field become part of the folder name. | Type the folder name without quotes, e.g. `[Gmail]/All Mail`, not `"[Gmail]/All Mail"`. |
 | Fetch fails with an IMAP error `IMAP SELECT of folder '...' returned NO` | The folder does not exist on the server or is spelled differently (case and exact label spelling matter, especially on Gmail). | Fix the folder name; no search is sent while `SELECT` fails. |
 | Save fails with "must contain ASCII characters only" | The criteria contains a non-ASCII character, e.g. an accented letter in a `SUBJECT` value. | Search for an ASCII part of the value instead. |
-| Save fails with "must not contain an IMAP literal" | The folder or criteria contains a marker such as `{5}`. | Remove the braces; quote values with `"..."` instead. |
-| No mail is ever fetched, but mail is arriving in the mailbox | The criteria does actually match any message (unbalanced quotes, wrong header/value). | Verify the folder name and criteria with the read-only probe in [docs/gmail-catchall.md](gmail-catchall.md) before assuming the fetch itself is broken. |
+| Save fails with "must not end with an IMAP literal" | The criteria ends with a marker such as `{5}`. | Quote the value, e.g. `"{5}"`, or remove the braces. |
+| No mail is ever fetched, but mail is arriving in the mailbox | The criteria does not actually match any message (unbalanced quotes, wrong header/value). | Verify the folder name and criteria with the read-only probe in [docs/gmail-catchall.md](gmail-catchall.md) before assuming the fetch itself is broken. |
 | Every unread mail in the mailbox gets fetched, not just the intended ones | Criteria is still the default `(UNSEEN)` (or otherwise too broad) against a mailbox that also receives unrelated mail. | Narrow the criteria (`HEADER Delivered-To`/`X-GM-RAW`/folder+label) before pointing the server at a shared or personal mailbox - see the warning in [docs/gmail-catchall.md](gmail-catchall.md). |
 | Count is much higher than expected / personal mail matches too | The Default routing rule at Workspace level is not scoped to non-recognized addresses only, or a Gmail filter/forward relabels `Delivered-To` on mail sent directly to the mailbox's own address. | Scope the Workspace routing rule and add a permanent `NOT TO` safety net to the criteria - see [Exclude your own mailbox](gmail-catchall.md#exclude-your-own-mailbox). |
 | Changing `imap_folder` has no visible effect on a POP server | The field is ignored for `server_type = 'pop'` by design. | Not a bug; POP has no folder/criteria concept in this addon. |

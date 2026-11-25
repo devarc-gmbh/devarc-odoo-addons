@@ -50,11 +50,11 @@ msgstr ""
 #. odoo-python
 #: code:addons/fetchmail_imap_filter/models/fetchmail_server.py:0
 msgid ""
-"IMAP folder and search criteria must not contain an IMAP literal such as "
-"{5}, the IMAP server would wait for data that is never sent."
+"IMAP search criteria must not end with an IMAP literal such as {5}, the "
+"IMAP server would wait for data that is never sent."
 msgstr ""
-"IMAP priečinok ani vyhľadávacie kritérium nesmú obsahovať IMAP literál "
-"ako {5}, IMAP server by čakal na dáta, ktoré nikdy neprídu."
+"IMAP vyhľadávacie kritérium nesmie končiť IMAP literálom ako {5}, IMAP "
+"server by čakal na dáta, ktoré nikdy neprídu."
 
 #. module: fetchmail_imap_filter
 #: model:ir.model.fields,help:fetchmail_imap_filter.field_fetchmail_server__imap_folder
