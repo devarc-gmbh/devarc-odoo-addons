@@ -1,0 +1,17 @@
+{
+    "name": "Fetchmail IMAP Filter",
+    "version": "19.0.1.0.0",
+    "category": "Productivity/Discuss",
+    "summary": "Fetch only the IMAP mails matching a folder and search criteria (UNSEEN enforced)",
+    "author": "DevArc GmbH",
+    "website": "https://github.com/devarc-gmbh/devarc-odoo-addons",
+    "support": "info@devarc.ch",
+    "maintainers": ["devarc-gmbh"],
+    "license": "LGPL-3",
+    "development_status": "Beta",
+    "depends": ["mail"],
+    "data": ["views/fetchmail_server_views.xml"],
+    "images": ["static/description/banner.png", "static/description/images/main_screenshot.png"],
+    "installable": True,
+    "application": False,
+}
