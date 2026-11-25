@@ -1,0 +1,92 @@
+<section style="max-width: 900px; margin: 0 auto; font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; color: #333333;">
+
+  <div class="row" style="margin-bottom: 24px;">
+    <div class="col-12 text-center">
+      <h1 style="font-weight: 700; margin-bottom: 8px;">Fetchmail IMAP Filter</h1>
+      <p style="font-size: 18px; color: #666666;">Fetch only the IMAP mails matching a folder and a search criteria, instead of every unread mail in the mailbox.</p>
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom: 32px;">
+    <div class="col-12 text-center">
+      <img src="banner.png" alt="Fetchmail IMAP Filter" class="img-fluid" style="max-width: 100%; border: 1px solid #dddddd; border-radius: 4px;"/>
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom: 32px;">
+    <div class="col-md-4" style="padding: 12px;">
+      <h4 style="font-weight: 600;">Exact folder and criteria</h4>
+      <p style="color: #555555;">Set an IMAP folder and a search criteria per incoming mail server, instead of Odoo core's fixed <code>INBOX</code> + <code>(UNSEEN)</code>.</p>
+    </div>
+    <div class="col-md-4" style="padding: 12px;">
+      <h4 style="font-weight: 600;">UNSEEN enforced</h4>
+      <p style="color: #555555;">A constraint rejects any criteria that does not start with <code>UNSEEN</code>, so the same mails can never be silently refetched and reprocessed on every cron run.</p>
+    </div>
+    <div class="col-md-4" style="padding: 12px;">
+      <h4 style="font-weight: 600;">No dependency on Gmail</h4>
+      <p style="color: #555555;">Depends on <code>mail</code> only. Gmail servers go through the same connection wrapper automatically once <code>google_gmail</code> is installed too.</p>
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom: 32px;">
+    <div class="col-12">
+      <h2 style="font-weight: 700; border-bottom: 2px solid #eeeeee; padding-bottom: 8px;">How it works</h2>
+      <ol style="color: #444444; font-size: 15px; line-height: 1.7;">
+        <li>Open an incoming mail server (Settings &gt; Technical &gt; Incoming Mail Servers) and set the new <strong>IMAP Folder</strong> and <strong>IMAP Search Criteria</strong> fields, right after the SSL/TLS checkbox.</li>
+        <li>On every fetch cycle, for a connection whose type is IMAP (plain IMAP, and Gmail once <code>google_gmail</code> reports the same type for it), the addon wraps the <code>select()</code> and <code>search()</code> calls of the connection so that the fetch runs <code>select(imap_folder)</code> followed by <code>search(None, imap_search_criteria)</code>.</li>
+        <li>The defaults (<code>INBOX</code>, <code>(UNSEEN)</code>) reproduce Odoo's own built-in fetch behaviour - nothing changes until you narrow the folder or the criteria.</li>
+        <li>POP servers are left completely untouched: the wrapper never applies, and the two fields are hidden on the form.</li>
+      </ol>
+      <img src="images/01-incoming-server-form.png" alt="IMAP folder and search criteria fields on the incoming mail server form" class="img-fluid" style="max-width: 100%; border: 1px solid #dddddd; border-radius: 4px;"/>
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom: 32px;">
+    <div class="col-12">
+      <h2 style="font-weight: 700; border-bottom: 2px solid #eeeeee; padding-bottom: 8px;">Gmail catch-all</h2>
+      <p style="color: #444444;">Route mail sent to an address your Workspace does not recognize into Odoo through a plus-addressed alias, matched by a <code>Delivered-To</code> header search or the Gmail-specific <code>X-GM-RAW</code> IMAP extension - full recipe, including a read-only way to verify a criteria before activating it, in the module's <code>docs/gmail-catchall.md</code>.</p>
+      <img src="images/02-gmail-folder-criteria.png" alt="Gmail folder and search criteria" class="img-fluid" style="max-width: 100%; border: 1px solid #dddddd; border-radius: 4px;"/>
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom: 32px;">
+    <div class="col-12">
+      <h2 style="font-weight: 700; border-bottom: 2px solid #eeeeee; padding-bottom: 8px;">Safety</h2>
+      <p style="color: #444444;">Saving a search criteria that does not start with the <code>UNSEEN</code> token is rejected outright - a criteria starting with <code>NOT</code> or <code>OR</code> can match already read mails that then get refetched and reprocessed on every scheduled run. A folder or criteria value containing a line break is rejected too, closing an IMAP command injection path.</p>
+      <img src="images/03-validation-unseen.png" alt="Search criteria not starting with UNSEEN is rejected" class="img-fluid" style="max-width: 100%; border: 1px solid #dddddd; border-radius: 4px;"/>
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom: 32px;">
+    <div class="col-12">
+      <h2 style="font-weight: 700; border-bottom: 2px solid #eeeeee; padding-bottom: 8px;">Available in your language</h2>
+      <p style="color: #444444;">Source strings are English, with full translations for German (<code>de.po</code>) and Slovak (<code>sk.po</code>) - field labels, help texts and the validation error all switch with the user's language.</p>
+      <img src="images/04-form-sk.png" alt="Incoming mail server form shown in Slovak" class="img-fluid" style="max-width: 100%; border: 1px solid #dddddd; border-radius: 4px;"/>
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom: 32px;">
+    <div class="col-12">
+      <h2 style="font-weight: 700; border-bottom: 2px solid #eeeeee; padding-bottom: 8px;">Requirements</h2>
+      <p style="color: #444444;">Depends on Odoo's own <code>mail</code> module only, no other Python or Odoo dependency. Install <code>google_gmail</code> as well if you want Gmail servers to pick up the same folder and criteria fields automatically.</p>
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom: 32px;">
+    <div class="col-12">
+      <h2 style="font-weight: 700; border-bottom: 2px solid #eeeeee; padding-bottom: 8px;">Learn more</h2>
+      <ul style="color: #444444; font-size: 15px; line-height: 1.7;">
+        <li><a href="TBD_YOUTUBE_URL">Video demo</a></li>
+        <li><a href="TBD_BLOG_URL">Blog post</a></li>
+        <li><a href="https://github.com/devarc-gmbh/devarc-odoo-addons">Source code and README</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 text-center" style="color: #999999; font-size: 13px; padding-top: 16px; border-top: 1px solid #eeeeee;">
+      <p>Support: <a href="mailto:info@devarc.ch">info@devarc.ch</a> &middot; <a href="https://github.com/devarc-gmbh/devarc-odoo-addons">Source &amp; docs</a> &middot; License: LGPL-3</p>
+    </div>
+  </div>
+
+</section>

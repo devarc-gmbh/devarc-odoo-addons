@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="view_email_server_form_imap_filter" model="ir.ui.view">
+    <field name="name">fetchmail.server.form.inherit.imap.filter</field>
+    <field name="model">fetchmail.server</field>
+    <field name="inherit_id" ref="mail.view_email_server_form" />
+    <field name="arch" type="xml">
+      <field name="is_ssl" position="after">
+        <field name="imap_folder" invisible="server_type not in ('imap', 'gmail')" />
+        <field name="imap_search_criteria" invisible="server_type not in ('imap', 'gmail')" />
+      </field>
+    </field>
+  </record>
+</odoo>
