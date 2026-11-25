@@ -50,12 +50,14 @@ msgstr ""
 #: model:ir.model.fields,help:fetchmail_imap_filter.field_fetchmail_server__imap_folder
 msgid ""
 "IMAP mailbox the incoming mails are fetched from, e.g. 'INBOX' or a Gmail "
-"label such as 'Odoo' fed by a filter. Names containing a space or a special "
-"character are quoted automatically. Ignored for POP servers."
+"label such as 'Odoo' fed by a filter. Non-ASCII characters are encoded to IMAP "
+"modified UTF-7 and names containing a space or a special character are quoted "
+"automatically. Ignored for POP servers."
 msgstr ""
 "IMAP-Postfach, aus dem die eingehenden Mails abgeholt werden, z. B. "
 "'INBOX' oder ein Gmail-Label wie 'Odoo', das von einem Filter befuellt "
-"wird. Namen mit Leerzeichen oder Sonderzeichen werden automatisch in "
+"wird. Nicht-ASCII-Zeichen werden automatisch in IMAP Modified UTF-7 "
+"kodiert und Namen mit Leerzeichen oder Sonderzeichen in "
 "Anfuehrungszeichen gesetzt. Bei POP-Servern ohne Wirkung."
 
 #. module: fetchmail_imap_filter
