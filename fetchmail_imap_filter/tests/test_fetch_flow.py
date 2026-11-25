@@ -6,9 +6,10 @@ from odoo.addons.mail.models.fetchmail import OdooIMAP4
 from odoo.addons.mail.tests.common import MailCommon
 from odoo.tests import tagged
 
+from .test_imap_selection import HEADER_CRITERIA
+
 MATCHING_SUBJECT = "Question about your offer"
 OTHER_SUBJECT = "Private mail for the mailbox owner"
-CRITERIA = '(UNSEEN HEADER Delivered-To "odoo@example.com")'
 
 
 class FakeIMAP4(OdooIMAP4):
@@ -74,7 +75,7 @@ class TestFetchFlow(MailCommon):
                 "user": "odoo@example.com",
                 "password": "secret",
                 "imap_folder": "Odoo",
-                "imap_search_criteria": CRITERIA,
+                "imap_search_criteria": HEADER_CRITERIA,
                 "state": "done",
             }
         )
@@ -127,7 +128,7 @@ class TestFetchFlow(MailCommon):
 
         self.assertEqual(connection.credentials, ("odoo@example.com", "secret"))
         self.assertEqual(connection.selected_folders, ["Odoo"])
-        self.assertEqual(connection.search_calls, [(None, CRITERIA)])
+        self.assertEqual(connection.search_calls, [(None, HEADER_CRITERIA)])
         self.assertEqual(connection.fetched_numbers, [b"1"])
         self.assertIn((b"1", "+FLAGS", "\\Seen"), connection.stored_flags)
         self.assertNotIn(b"2", [stored[0] for stored in connection.stored_flags])

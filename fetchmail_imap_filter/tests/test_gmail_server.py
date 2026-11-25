@@ -4,7 +4,7 @@ from unittest.mock import Mock, call, patch
 
 from odoo.tests import TransactionCase, tagged
 
-CRITERIA = '(UNSEEN X-GM-RAW "deliveredto:odoo@example.com")'
+from .test_imap_selection import GMAIL_RAW_CRITERIA
 
 
 @tagged("post_install", "-at_install")
@@ -23,7 +23,7 @@ class TestGmailServer(TransactionCase):
                 "is_ssl": True,
                 "user": "odoo@example.com",
                 "imap_folder": "Odoo",
-                "imap_search_criteria": CRITERIA,
+                "imap_search_criteria": GMAIL_RAW_CRITERIA,
             }
         )
 
@@ -44,4 +44,4 @@ class TestGmailServer(TransactionCase):
         self.assertIsInstance(connection.check_unread_messages, functools.partial)
         self.assertEqual(connection.check_unread_messages(), 2)
         self.assertEqual(connection.select.call_args_list[-1], call("Odoo"))
-        connection.search.assert_called_once_with(None, CRITERIA)
+        connection.search.assert_called_once_with(None, GMAIL_RAW_CRITERIA)
